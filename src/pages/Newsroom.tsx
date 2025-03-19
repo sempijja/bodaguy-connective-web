@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import MainLayout from '@/layouts/MainLayout';
 import PageHeader from '@/components/PageHeader';
@@ -7,63 +7,37 @@ import NewsCard from '@/components/NewsCard';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import PageTransition from '@/components/PageTransition';
+import { fetchNewsItems, fetchNewsCategories } from '@/cms';
+import type { NewsItem } from '@/types/news';
 
 const Newsroom = () => {
-  // News categories
-  const categories = ['All', 'Press Releases', 'Company News', 'Product Updates', 'Events'];
+  // News state
+  const [categories, setCategories] = useState<string[]>([]);
   const [activeCategory, setActiveCategory] = useState('All');
+  const [news, setNews] = useState<NewsItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   
-  // Mock news data
-  const news = [
-    {
-      id: '1',
-      title: 'Bodaguy Raises $30M in Series B Funding to Expand Operations',
-      excerpt: 'The new funding will enable Bodaguy to expand its services to 15 new cities across the United States and enhance its technology platform for both drivers and customers.',
-      date: '2023-06-15',
-      image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80',
-      category: 'Press Releases'
-    },
-    {
-      id: '2',
-      title: 'Bodaguy Launches New Same-Day Delivery Feature for Business Customers',
-      excerpt: 'Business customers can now offer same-day delivery to their customers through Bodaguy\'s expanded delivery network and optimized routing technology.',
-      date: '2023-05-22',
-      image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=1200&q=80',
-      category: 'Product Updates'
-    },
-    {
-      id: '3',
-      title: 'Bodaguy Partners with Major Retail Chain to Handle Last-Mile Delivery',
-      excerpt: 'The partnership will allow the retail chain to offer faster delivery options to customers while leveraging Bodaguy\'s extensive network of delivery drivers.',
-      date: '2023-04-18',
-      image: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=1200&q=80',
-      category: 'Company News'
-    },
-    {
-      id: '4',
-      title: 'Bodaguy Announces New Driver Benefits Program',
-      excerpt: 'The new program offers drivers health insurance options, retirement benefits, and additional perks designed to improve driver satisfaction and retention.',
-      date: '2023-03-30',
-      image: 'https://images.unsplash.com/photo-1587691592099-24045742c181?auto=format&fit=crop&w=1200&q=80',
-      category: 'Company News'
-    },
-    {
-      id: '5',
-      title: 'Bodaguy to Host Annual Driver Conference in Chicago',
-      excerpt: 'The two-day event will feature workshops, networking opportunities, and sessions focused on maximizing earnings and improving the driver experience.',
-      date: '2023-02-15',
-      image: 'https://images.unsplash.com/photo-1540317580384-e5d43867caa6?auto=format&fit=crop&w=1200&q=80',
-      category: 'Events'
-    },
-    {
-      id: '6',
-      title: 'Bodaguy App Gets Major Redesign for Enhanced User Experience',
-      excerpt: 'The updated app features a more intuitive interface, faster performance, and new features designed to make package sending and tracking easier than ever.',
-      date: '2023-01-10',
-      image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80',
-      category: 'Product Updates'
-    }
-  ];
+  // Load data from CMS
+  useEffect(() => {
+    const loadData = async () => {
+      setIsLoading(true);
+      try {
+        const [items, cats] = await Promise.all([
+          fetchNewsItems(),
+          fetchNewsCategories()
+        ]);
+        
+        setNews(items);
+        setCategories(cats);
+      } catch (error) {
+        console.error('Failed to load news data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    loadData();
+  }, []);
   
   // Filter news by category
   const filteredNews = activeCategory === 'All'
@@ -78,19 +52,21 @@ const Newsroom = () => {
       <PageTransition>
         <PageHeader
           title="Newsroom"
-          description="Stay up to date with the latest news, updates, and announcements from Bodaguy."
+          description="Stay up to date with the latest news, updates, and announcements from Bodaguy Uganda."
         />
         
         {/* Featured News Section */}
-        <section className="py-12 bg-white">
-          <div className="container px-4 md:px-6 mx-auto">
-            <NewsCard
-              {...featuredNews}
-              variant="featured"
-              className="animate-fade-in"
-            />
-          </div>
-        </section>
+        {featuredNews && (
+          <section className="py-12 bg-white">
+            <div className="container px-4 md:px-6 mx-auto">
+              <NewsCard
+                {...featuredNews}
+                variant="featured"
+                className="animate-fade-in"
+              />
+            </div>
+          </section>
+        )}
         
         {/* News Filter & Subscribe */}
         <section className="py-8 bg-gray-50 border-y border-gray-200">
@@ -133,27 +109,47 @@ const Newsroom = () => {
         {/* News Grid */}
         <section className="py-16 bg-white">
           <div className="container px-4 md:px-6 mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredNews.map((item, index) => (
-                <NewsCard
-                  key={item.id}
-                  {...item}
-                  className="animate-slide-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                />
-              ))}
-            </div>
+            {isLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <div key={i} className="h-80 bg-gray-100 rounded-2xl animate-pulse"></div>
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredNews.map((item, index) => (
+                  <NewsCard
+                    key={item.id}
+                    {...item}
+                    className="animate-slide-up"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  />
+                ))}
+              </div>
+            )}
+            
+            {/* No results */}
+            {filteredNews.length === 0 && !isLoading && (
+              <div className="text-center py-12">
+                <h3 className="text-xl font-medium text-gray-900 mb-2">No news found</h3>
+                <p className="text-gray-600">
+                  Try selecting a different category to find what you're looking for.
+                </p>
+              </div>
+            )}
             
             {/* Load More Button */}
-            <div className="mt-12 text-center">
-              <Button 
-                variant="outline" 
-                className="rounded-full"
-              >
-                Load More News
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
+            {filteredNews.length > 0 && (
+              <div className="mt-12 text-center">
+                <Button 
+                  variant="outline" 
+                  className="rounded-full"
+                >
+                  Load More News
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+            )}
           </div>
         </section>
         
@@ -165,7 +161,7 @@ const Newsroom = () => {
                 Media Contact
               </h2>
               <p className="text-gray-600">
-                For press inquiries, please contact our media relations team. We're happy to provide information, arrange interviews, and assist with any media-related requests.
+                For press inquiries, please contact our media relations team in Kampala. We're happy to provide information, arrange interviews, and assist with any media-related requests.
               </p>
               <div className="pt-4">
                 <a 
@@ -177,10 +173,10 @@ const Newsroom = () => {
               </div>
               <div className="pt-2">
                 <a 
-                  href="tel:+18889876543" 
+                  href="tel:+256700123456" 
                   className="text-bodaguy-600 font-medium hover:text-bodaguy-700 transition-colors"
                 >
-                  +1 (888) 987-6543
+                  +256 700 123456
                 </a>
               </div>
             </div>
