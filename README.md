@@ -1,69 +1,152 @@
-# Welcome to your Lovable project
+# Bodaguy Connect - Modern Delivery Service Platform
 
-## Project info
+![Bodaguy Connect](https://source.unsplash.com/random/1200x630?delivery&sig=1)
 
-**URL**: https://lovable.dev/projects/09743daf-9848-4d12-ae76-8bb852a22499
+## Overview
 
-## How can I edit this code?
+Bodaguy Connect is a modern web application for an on-demand delivery service similar to Uber Connect. The platform connects drivers with customers who need package delivery services.
 
-There are several ways of editing your application.
+## Live Demo
 
-**Use Lovable**
+You can view the live demo at: [https://bodaguy.lovable.dev](https://bodaguy.lovable.dev)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/09743daf-9848-4d12-ae76-8bb852a22499) and start prompting.
+## Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- Modern, responsive design with clean UI/UX
+- Multiple pages: Home, About, Newsroom, Blog, and Careers
+- Mobile-friendly layout with smooth animations
+- Optimized for conversion with clear CTAs for both drivers and customers
 
-**Use your preferred IDE**
+## Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- React.js (with TypeScript)
+- Vite for build tooling
+- React Router for routing
+- Tailwind CSS for styling
+- shadcn/ui for UI components
+- Framer Motion for animations
+- Tanstack Query for data fetching
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Local Development Setup
 
-Follow these steps:
+### Prerequisites
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Node.js (v14.0.0 or newer)
+- npm or yarn
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Installation
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/bodaguy-connect.git
+   cd bodaguy-connect
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+2. Install dependencies
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Start the development server
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:8080`
+
+## Project Structure
+
+```
+bodaguy-connect/
+├── public/             # Static assets
+├── src/
+│   ├── assets/         # Project assets (images, icons, etc.)
+│   ├── components/     # Reusable components
+│   ├── layouts/        # Page layouts
+│   ├── pages/          # Page components
+│   ├── hooks/          # Custom React hooks
+│   ├── lib/            # Utility functions
+│   ├── App.tsx         # Main App component with routes
+│   └── main.tsx        # Application entry point
+├── index.html          # HTML template
+├── tailwind.config.ts  # Tailwind CSS configuration
+└── vite.config.ts      # Vite configuration
 ```
 
-**Edit a file directly in GitHub**
+## Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### GitHub Pages Deployment
 
-**Use GitHub Codespaces**
+1. Install the gh-pages package:
+   ```bash
+   npm install --save-dev gh-pages
+   # or
+   yarn add -D gh-pages
+   ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+2. Add the following scripts to your package.json:
+   ```json
+   "scripts": {
+     "predeploy": "npm run build",
+     "deploy": "gh-pages -d dist"
+   }
+   ```
 
-## What technologies are used for this project?
+3. Add the homepage field to your package.json (replace with your GitHub username and repo name):
+   ```json
+   "homepage": "https://yourusername.github.io/bodaguy-connect"
+   ```
 
-This project is built with .
+4. Update the vite.config.ts for GitHub Pages:
+   ```typescript
+   export default defineConfig({
+     base: '/bodaguy-connect/', // Add this line
+     // other configurations...
+   });
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+5. Deploy to GitHub Pages:
+   ```bash
+   npm run deploy
+   # or
+   yarn deploy
+   ```
 
-## How can I deploy this project?
+### Other Deployment Options
 
-Simply open [Lovable](https://lovable.dev/projects/09743daf-9848-4d12-ae76-8bb852a22499) and click on Share -> Publish.
+The project can also be deployed to:
+- Netlify
+- Vercel
+- AWS Amplify
+- Any static site hosting service
 
-## I want to use a custom domain - is that possible?
+## Adding New Content
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+### Images and Assets
+- Place new images in the `src/assets/` directory
+- Import them from the `src/assets/index.ts` file
+
+### Adding New Pages
+1. Create a new page component in `src/pages/`
+2. Add the route in `src/App.tsx`
+3. Add a link to the new page in the navigation components
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+
+For questions or support, please contact info@bodaguy.com
