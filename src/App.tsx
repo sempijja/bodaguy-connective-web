@@ -13,6 +13,7 @@ import NewsItem from "./pages/NewsItem";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Careers from "./pages/Careers"; 
+import BecomeDriver from "./pages/BecomeDriver";
 import NotFound from "./pages/NotFound";
 
 // Add motion library
@@ -35,6 +36,7 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/careers" element={<Careers />} />
+            <Route path="/become-driver" element={<BecomeDriver />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
