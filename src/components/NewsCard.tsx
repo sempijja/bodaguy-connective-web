@@ -12,6 +12,7 @@ interface NewsCardProps {
   image: string;
   category: string;
   className?: string;
+  style?: React.CSSProperties;
   variant?: 'default' | 'featured';
 }
 
@@ -23,6 +24,7 @@ const NewsCard = ({
   image,
   category,
   className,
+  style,
   variant = 'default'
 }: NewsCardProps) => {
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
@@ -38,6 +40,7 @@ const NewsCard = ({
         variant === 'featured' && "md:flex-row",
         className
       )}
+      style={style}
     >
       <div 
         className={cn(

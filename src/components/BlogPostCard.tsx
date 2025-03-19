@@ -17,6 +17,7 @@ interface BlogPostCardProps {
     avatar: string;
   };
   className?: string;
+  style?: React.CSSProperties;
   variant?: 'default' | 'featured';
 }
 
@@ -30,6 +31,7 @@ const BlogPostCard = ({
   category,
   author,
   className,
+  style,
   variant = 'default'
 }: BlogPostCardProps) => {
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
@@ -43,7 +45,7 @@ const BlogPostCard = ({
       <Link to={`/blog/${id}`} className={cn(
         "group relative overflow-hidden block rounded-3xl",
         className
-      )}>
+      )} style={style}>
         <div className="absolute inset-0">
           <img 
             src={image} 
@@ -88,7 +90,7 @@ const BlogPostCard = ({
     <article className={cn(
       "group overflow-hidden flex flex-col bg-white border border-gray-200 rounded-2xl transition-all duration-300 hover:shadow-md hover:border-bodaguy-200",
       className
-    )}>
+    )} style={style}>
       <Link to={`/blog/${id}`} className="relative overflow-hidden h-52">
         <img 
           src={image} 
