@@ -1,4 +1,3 @@
-
 import { ArrowRight, Package, Clock, Shield, MapPin } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
@@ -19,14 +18,14 @@ const Index = () => {
                 <div>
                   <div className="inline-flex items-center rounded-full bg-bodaguy-50 px-3 py-1 text-sm text-bodaguy-600 mb-6">
                     <span className="flex h-2 w-2 rounded-full bg-bodaguy-600 mr-2"></span>
-                    Fast, reliable delivery service
+                    Fast, reliable delivery service across Uganda
                   </div>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
                     Connect, deliver, <br className="hidden md:block" />
                     <span className="text-bodaguy-600">simplify your life</span>
                   </h1>
                   <p className="mt-6 text-lg text-gray-600 max-w-md">
-                    Bodaguy connects drivers with customers for fast, reliable package delivery services across your city.
+                    Bodaguy connects drivers with customers for fast, reliable package delivery services across Uganda's cities.
                   </p>
                 </div>
                 
@@ -56,7 +55,7 @@ const Index = () => {
                       ))}
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-sm font-medium">2,000+</span>
+                      <span className="text-sm font-medium">1,000+</span>
                       <span className="text-xs text-gray-500">Active Drivers</span>
                     </div>
                   </div>
@@ -77,43 +76,12 @@ const Index = () => {
               </div>
               
               <div className="lg:w-1/2 relative animate-slide-up">
-                <div className="relative z-10 bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200">
+                <div className="relative z-10">
                   <img 
                     src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1200&q=80" 
                     alt="Bodaguy delivery app" 
-                    className="w-full h-auto rounded-t-3xl"
+                    className="w-full h-auto rounded-3xl border border-gray-200 shadow-xl"
                   />
-                  <div className="p-8">
-                    <div className="flex items-center justify-between mb-6">
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900">Package Delivery</h3>
-                        <p className="text-sm text-gray-600">7.2 miles • 28 mins</p>
-                      </div>
-                      <span className="px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
-                        In Transit
-                      </span>
-                    </div>
-                    <div className="space-y-4">
-                      <div className="flex items-start gap-3">
-                        <div className="h-8 w-8 rounded-full bg-bodaguy-100 flex items-center justify-center text-bodaguy-600 flex-shrink-0">
-                          <MapPin size={20} />
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-500">Pickup Location</p>
-                          <p className="font-medium">123 Market St, San Francisco</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <div className="h-8 w-8 rounded-full bg-bodaguy-100 flex items-center justify-center text-bodaguy-600 flex-shrink-0">
-                          <MapPin size={20} />
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-500">Dropoff Location</p>
-                          <p className="font-medium">456 Valencia St, San Francisco</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
                 
                 {/* Decorative elements */}
@@ -126,7 +94,7 @@ const Index = () => {
           {/* Trusted by section */}
           <div className="container px-4 md:px-6 mx-auto mt-20">
             <div className="text-center mb-8">
-              <h2 className="text-lg font-medium text-gray-600">Trusted by businesses across the country</h2>
+              <h2 className="text-lg font-medium text-gray-600">Trusted by businesses across Uganda</h2>
             </div>
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
               {Array(5).fill(0).map((_, i) => (
@@ -154,28 +122,28 @@ const Index = () => {
               <FeatureCard
                 icon={<Package size={24} />}
                 title="Fast Delivery"
-                description="Get your packages delivered in record time with our network of trusted drivers."
+                description="Get your packages delivered in record time with our network of trusted drivers across Kampala and Uganda."
                 className="animate-slide-in"
                 iconClassName="bg-orange-50 text-orange-600"
               />
               <FeatureCard
                 icon={<Clock size={24} />}
                 title="Real-time Tracking"
-                description="Follow your package's journey in real-time with our advanced tracking system."
+                description="Follow your package's journey in real-time with our advanced tracking system that works even with limited connectivity."
                 className="animate-slide-in [animation-delay:100ms]"
                 iconClassName="bg-blue-50 text-blue-600"
               />
               <FeatureCard
                 icon={<Shield size={24} />}
                 title="Secure & Insured"
-                description="All deliveries are insured and handled with the utmost care and security."
+                description="All deliveries are insured and handled with the utmost care and security throughout Uganda."
                 className="animate-slide-in [animation-delay:200ms]"
                 iconClassName="bg-green-50 text-green-600"
               />
               <FeatureCard
                 icon={<MapPin size={24} />}
                 title="Wide Coverage"
-                description="Our extensive network of drivers ensures wide coverage across your city."
+                description="Our extensive network of drivers ensures wide coverage across Kampala, Entebbe, Jinja, and other major cities in Uganda."
                 className="animate-slide-in [animation-delay:300ms]"
                 iconClassName="bg-purple-50 text-purple-600"
               />
@@ -207,7 +175,7 @@ const Index = () => {
                 {
                   step: '02',
                   title: 'Get matched with a driver',
-                  description: 'Our system automatically matches you with the closest available driver.',
+                  description: 'Our system automatically matches you with the closest available driver in your area.',
                   image: 'https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?auto=format&fit=crop&w=600&q=80',
                   delay: 100
                 },
@@ -307,29 +275,29 @@ const Index = () => {
                 What our customers say
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Don't just take our word for it — here's what customers and drivers have to say about their Bodaguy experience.
+                Don't just take our word for it — here's what customers and drivers in Uganda have to say about their Bodaguy experience.
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  quote: "Bodaguy has been a game-changer for my small business. The delivery is always on time and the drivers are professional.",
-                  author: "Sarah Johnson",
+                  quote: "Bodaguy has been a game-changer for my small business in Kampala. The delivery is always on time and the drivers are professional.",
+                  author: "Sarah Nakato",
                   position: "Small Business Owner",
                   avatar: "https://source.unsplash.com/random/100x100?face&sig=1",
                   delay: 0
                 },
                 {
-                  quote: "I've been a Bodaguy driver for 6 months now and the flexibility is amazing. I can work when I want and earn good money.",
-                  author: "Michael Chen",
+                  quote: "I've been a Bodaguy driver for 6 months now and the flexibility is amazing. I can work when I want and earn good money across Kampala.",
+                  author: "Michael Okello",
                   position: "Bodaguy Driver",
                   avatar: "https://source.unsplash.com/random/100x100?face&sig=2",
                   delay: 100
                 },
                 {
-                  quote: "The tracking feature is fantastic. I always know exactly where my package is and when it will arrive. No more waiting around!",
-                  author: "Alex Rodriguez",
+                  quote: "The tracking feature is fantastic. I always know exactly where my package is and when it will arrive, even in Ugandan traffic. No more waiting around!",
+                  author: "Alex Mugisha",
                   position: "Regular Customer",
                   avatar: "https://source.unsplash.com/random/100x100?face&sig=3",
                   delay: 200
@@ -371,9 +339,9 @@ const Index = () => {
         <section className="py-24 bg-gray-900 text-white relative overflow-hidden">
           <div className="container px-4 md:px-6 mx-auto relative z-10">
             <div className="max-w-3xl mx-auto text-center space-y-8 animate-fade-in">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Ready to simplify your deliveries?</h2>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Ready to simplify your deliveries in Uganda?</h2>
               <p className="text-lg text-white/80">
-                Join thousands of happy customers who trust Bodaguy for their delivery needs.
+                Join thousands of happy customers who trust Bodaguy for their delivery needs across Uganda.
               </p>
               
               <div className="flex flex-wrap justify-center gap-4 pt-4">

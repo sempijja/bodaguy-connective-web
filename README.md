@@ -1,10 +1,11 @@
-# Bodaguy Connect - Modern Delivery Service Platform
+
+# Bodaguy Connect - Uganda's Modern Delivery Service Platform
 
 ![Bodaguy Connect](https://source.unsplash.com/random/1200x630?delivery&sig=1)
 
 ## Overview
 
-Bodaguy Connect is a modern web application for an on-demand delivery service similar to Uber Connect. The platform connects drivers with customers who need package delivery services.
+Bodaguy Connect is a modern web application for an on-demand delivery service in Uganda, similar to Uber Connect. The platform connects drivers with customers who need package delivery services across Kampala and other major Ugandan cities.
 
 ## Live Demo
 
@@ -12,7 +13,7 @@ You can view the live demo at: [https://bodaguy.lovable.dev](https://bodaguy.lov
 
 ## Features
 
-- Modern, responsive design with clean UI/UX
+- Modern, responsive design with clean UI/UX optimized for Ugandan market
 - Multiple pages: Home, About, Newsroom, Blog, and Careers
 - Mobile-friendly layout with smooth animations
 - Optimized for conversion with clear CTAs for both drivers and customers
@@ -81,40 +82,14 @@ bodaguy-connect/
 
 ### GitHub Pages Deployment
 
-1. Install the gh-pages package:
-   ```bash
-   npm install --save-dev gh-pages
-   # or
-   yarn add -D gh-pages
-   ```
+The project is configured to automatically deploy to GitHub Pages using GitHub Actions. The workflow is defined in `.github/workflows/deploy.yml`.
 
-2. Add the following scripts to your package.json:
-   ```json
-   "scripts": {
-     "predeploy": "npm run build",
-     "deploy": "gh-pages -d dist"
-   }
-   ```
+To deploy manually:
 
-3. Add the homepage field to your package.json (replace with your GitHub username and repo name):
-   ```json
-   "homepage": "https://yourusername.github.io/bodaguy-connect"
-   ```
+1. Push your changes to the main branch, or
+2. Go to the Actions tab in your GitHub repository and manually trigger the "Deploy to GitHub Pages" workflow
 
-4. Update the vite.config.ts for GitHub Pages:
-   ```typescript
-   export default defineConfig({
-     base: '/bodaguy-connect/', // Add this line
-     // other configurations...
-   });
-   ```
-
-5. Deploy to GitHub Pages:
-   ```bash
-   npm run deploy
-   # or
-   yarn deploy
-   ```
+The deployed site will be available at: `https://yourusername.github.io/bodaguy-connect/`
 
 ### Other Deployment Options
 
@@ -149,4 +124,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-For questions or support, please contact info@bodaguy.com
+For questions or support, please contact info@bodaguy.ug
+
