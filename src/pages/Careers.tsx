@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { ArrowRight, Briefcase, MapPin } from 'lucide-react';
 import MainLayout from '@/layouts/MainLayout';
@@ -30,7 +29,7 @@ const Careers = () => {
       location: 'San Francisco, CA',
       department: 'Engineering',
       type: 'Full-Time',
-      description: 'Join our engineering team to build and scale our delivery platform. You'll work on challenging problems related to routing algorithms, real-time tracking, and mobile app development.'
+      description: "Join our engineering team to build and scale our delivery platform. You'll work on challenging problems related to routing algorithms, real-time tracking, and mobile app development."
     },
     {
       id: '2',
@@ -38,7 +37,7 @@ const Careers = () => {
       location: 'Remote (US)',
       department: 'Product',
       type: 'Full-Time',
-      description: 'Lead product initiatives from conception to launch. You'll work closely with engineering, design, and business teams to define product strategy and roadmap for our delivery platform.'
+      description: "Lead product initiatives from conception to launch. You'll work closely with engineering, design, and business teams to define product strategy and roadmap for our delivery platform."
     },
     {
       id: '3',
@@ -46,7 +45,7 @@ const Careers = () => {
       location: 'New York, NY',
       department: 'Design',
       type: 'Full-Time',
-      description: 'Create beautiful, intuitive designs for our mobile apps and website. You'll be responsible for the entire design process, from user research to visual design and prototyping.'
+      description: "Create beautiful, intuitive designs for our mobile apps and website. You'll be responsible for the entire design process, from user research to visual design and prototyping."
     },
     {
       id: '4',
@@ -54,7 +53,7 @@ const Careers = () => {
       location: 'Los Angeles, CA',
       department: 'Marketing',
       type: 'Full-Time',
-      description: 'Drive customer acquisition and retention strategies. You'll be responsible for creating and executing marketing campaigns to grow our user base of both customers and drivers.'
+      description: "Drive customer acquisition and retention strategies. You'll be responsible for creating and executing marketing campaigns to grow our user base of both customers and drivers."
     },
     {
       id: '5',
@@ -62,7 +61,7 @@ const Careers = () => {
       location: 'Chicago, IL',
       department: 'Operations',
       type: 'Full-Time',
-      description: 'Help manage day-to-day operations, including driver onboarding, customer service escalations, and ensuring smooth delivery operations across our service areas.'
+      description: "Help manage day-to-day operations, including driver onboarding, customer service escalations, and ensuring smooth delivery operations across our service areas."
     },
     {
       id: '6',
@@ -70,7 +69,7 @@ const Careers = () => {
       location: 'Remote (US)',
       department: 'Customer Support',
       type: 'Full-Time',
-      description: 'Provide exceptional support to our customers and drivers. You'll be the first point of contact for service inquiries, helping to resolve issues and ensure a positive experience.'
+      description: "Provide exceptional support to our customers and drivers. You'll be the first point of contact for service inquiries, helping to resolve issues and ensure a positive experience."
     },
     {
       id: '7',
@@ -78,7 +77,7 @@ const Careers = () => {
       location: 'San Francisco, CA',
       department: 'Engineering',
       type: 'Full-Time',
-      description: 'Work on the core infrastructure of our delivery platform. You'll design and implement scalable services, APIs, and data pipelines to support our growing business.'
+      description: "Work on the core infrastructure of our delivery platform. You'll design and implement scalable services, APIs, and data pipelines to support our growing business."
     },
     {
       id: '8',
@@ -86,7 +85,7 @@ const Careers = () => {
       location: 'Remote (US)',
       department: 'Engineering',
       type: 'Full-Time',
-      description: 'Analyze large datasets to extract insights that drive business decisions. You'll work on predictive models for demand forecasting, optimal routing, and driver matching algorithms.'
+      description: "Analyze large datasets to extract insights that drive business decisions. You'll work on predictive models for demand forecasting, optimal routing, and driver matching algorithms."
     }
   ];
   
