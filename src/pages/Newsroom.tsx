@@ -52,7 +52,7 @@ const Newsroom = () => {
       <PageTransition>
         <PageHeader
           title="Newsroom"
-          description="Stay up to date with the latest news, updates, and announcements from Bodaguy Uganda."
+          description="Stay up to date with the latest news, updates, and announcements from Bodaguy."
         />
         
         {/* Featured News Section */}

@@ -8,27 +8,33 @@ const About = () => {
   // Team members data
   const teamMembers = [
     {
-      name: 'John Smith',
-      role: 'CEO & Co-Founder',
-      bio: 'John has over 15 years of experience in logistics and transportation. He previously founded two successful startups.',
+      name: 'Pius Onapa',
+      role: 'Founder/CEO',
+      bio: 'Pius has been on the Ugandan start-up scene for more than 5 years and has since founded a number of products most in the transportatin space. He leads the company direction regards products, strategy and leads the data protection team. He is also founer of Lyanda Technologies the parent company for Bodaguy',
       image: 'https://source.unsplash.com/random/400x400?man&sig=1'
     },
     {
-      name: 'Sarah Johnson',
-      role: 'CTO & Co-Founder',
-      bio: 'Sarah leads our engineering team with her expertise in mobile app development and distributed systems.',
+      name: 'Ssempijja Charles',
+      role: 'Head of Product',
+      bio: 'Charles leads the product team, product design and developing product vision for the different products on the product portfolio at Bodaguy.',
       image: 'https://source.unsplash.com/random/400x400?woman&sig=2'
     },
     {
-      name: 'Michael Chen',
-      role: 'COO',
-      bio: 'Michael oversees daily operations and ensures efficient delivery processes across all our service areas.',
+      name: 'Muwonge Lawrence',
+      role: 'CTO',
+      bio: 'Lawrence is in charge of the engineering efforts at Bodaguy. He leads the mobile and web development teams to develop technologies that are usable at scale and secure enough for our users.',
       image: 'https://source.unsplash.com/random/400x400?man&sig=3'
     },
     {
-      name: 'Emily Rodriguez',
-      role: 'CMO',
-      bio: 'Emily drives our marketing strategy with her innovative approaches and deep understanding of customer needs.',
+      name: 'Luwaga Meshach (Mulinsike)',
+      role: 'Product Manager',
+      bio: 'Meshach leads the efforts to design, develop and deploy products on time and in line with the business needs. He acts as the primary liaison between development, marketing and management to ensure alignment on priorities.',
+      image: 'https://source.unsplash.com/random/400x400?woman&sig=4'
+    }
+    {
+      name: 'Chambaga Abdallah',
+      role: 'Software Engineer',
+      bio: 'Abdallah is in charge of building the frontend technologies for our different products and making sure that they are stable and scalable.',
       image: 'https://source.unsplash.com/random/400x400?woman&sig=4'
     }
   ];
@@ -73,10 +79,10 @@ const About = () => {
                   Connecting people through fast, reliable delivery
                 </h2>
                 <p className="text-lg text-gray-600">
-                  Bodaguy was founded in 2020 with a simple mission: to make package delivery as easy as possible. We noticed a gap in the market for on-demand, reliable delivery services that could connect people who need to send packages with drivers ready to deliver them.
+                  Bodaguy was founded in 2024 with a simple mission: to make package delivery as easy as possible. We noticed a gap in the market for on-demand, reliable delivery services that could connect people who need to send packages with drivers ready to deliver them.
                 </p>
                 <p className="text-lg text-gray-600">
-                  What started as a small operation in San Francisco has grown into a thriving network of drivers and customers across major cities. Our platform has facilitated millions of deliveries, helping businesses grow and individuals save time.
+                  What started as a small operation in Kampala that is over time growing to new cities. Our platform has facilitated deliveries, helping businesses grow and individuals save time.
                 </p>
                 <p className="text-lg text-gray-600">
                   Today, we're proud to be a leading force in revolutionizing local delivery services with our technology-first approach and commitment to quality service.
@@ -96,15 +102,15 @@ const About = () => {
                 <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200">
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <p className="text-3xl font-bold text-bodaguy-600">1M+</p>
+                      <p className="text-3xl font-bold text-bodaguy-600">100K+</p>
                       <p className="text-sm text-gray-600">Deliveries</p>
                     </div>
                     <div>
-                      <p className="text-3xl font-bold text-bodaguy-600">25+</p>
+                      <p className="text-3xl font-bold text-bodaguy-600">5+</p>
                       <p className="text-sm text-gray-600">Cities</p>
                     </div>
                     <div>
-                      <p className="text-3xl font-bold text-bodaguy-600">10K+</p>
+                      <p className="text-3xl font-bold text-bodaguy-600">3K+</p>
                       <p className="text-sm text-gray-600">Drivers</p>
                     </div>
                   </div>
@@ -215,9 +221,9 @@ const About = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Visit Us</h3>
                 <p className="text-gray-600">
-                  123 Market Street<br />
-                  Suite 100<br />
-                  San Francisco, CA 94103
+                  P O BOX 171254<br />
+                  Ntinda<br />
+                  Kampala, Uganda
                 </p>
               </div>
               
