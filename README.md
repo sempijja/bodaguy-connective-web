@@ -21,8 +21,8 @@
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/sempijja/bodaguy-connect.git
-   cd bodaguy-connect
+   git clone https://github.com/sempijja/bodaguy-website.git
+   cd bodaguy-website
    ```
 
 2. Install dependencies
