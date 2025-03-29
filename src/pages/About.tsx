@@ -9,7 +9,7 @@ const About = () => {
     {
       name: 'Pius Onapa',
       role: 'Founder/CEO',
-      bio: 'Pius has been on the Ugandan start-up scene for more than 5 years and has since founded a number of products most in the transportatin space. He leads the company direction regards products, strategy and leads the data protection team. He is also founer of Lyanda Technologies the parent company for Bodaguy',
+      bio: 'Pius has been on the Ugandan start-up scene for more than 6 years and has since founded a number of products most in the transportatin space. He leads the company direction regards products, strategy and leads the data protection team. He is also founer of Lyanda Technologies the parent company for Bodaguy',
       image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/g_face/v1234567890/1742909629111_drdlrq'
     },
     {
