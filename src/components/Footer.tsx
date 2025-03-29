@@ -116,11 +116,11 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="mailto:bodaguyfrieght@gmail.com" 
+                  href="mailto:bodaguyfreight@gmail.com" 
                   className="flex gap-3 text-gray-600 hover:text-bodaguy-600 transition-colors text-sm"
                 >
                   <Mail size={20} className="text-bodaguy-600 flex-shrink-0" />
-                  <span>bodaguyfrieght@gmail.com</span>
+                  <span>bodaguyfreight@gmail.com</span>
                 </a>
               </li>
               <li>
@@ -140,7 +140,7 @@ const Footer = () => {
         <div className="py-6 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © {currentYear} Bodaguy Inc. Lyanda Technologies Limited. All rights reserved.
+              © {currentYear} Boda Guy Freight Services by Lyanda Technologies Limited. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link to="/privacy" className="text-gray-500 hover:text-bodaguy-600 text-sm">
