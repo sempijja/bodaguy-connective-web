@@ -37,27 +37,24 @@ const Footer = () => {
           {/* Company */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 font-bold text-xl text-bodaguy-700 mb-6">
-              <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="48" height="48" rx="12" fill="#0EA5E9"/>
-                <path d="M14 18C14 15.7909 15.7909 14 18 14H30C32.2091 14 34 15.7909 34 18V30C34 32.2091 32.2091 34 30 34H18C15.7909 34 14 32.2091 14 30V18Z" fill="white"/>
-                <path d="M22 20L26 24L22 28" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span>Bodaguy</span>
+            <img 
+            src="https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,z_1.0/v1234567890/android-icon-48x48_htru7i" 
+            alt="Boda Guy Logo" 
+            className="h-8 w-8 rounded-[12px]"
+          />
+              <span>Boda Guy</span>
             </Link>
             <p className="text-gray-600 text-sm">
-              Bodaguy connects riders with drivers to deliver packages, goods, and more in a fast, reliable way.
+              Boda Guy connects riders with drivers to deliver packages, goods, and more in a fast, reliable way.
             </p>
             <div className="flex gap-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-bodaguy-600 transition-colors" aria-label="Facebook">
-                <Facebook size={20} />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-bodaguy-600 transition-colors" aria-label="Twitter">
+              <a href="https://x.com/bodaguy_app" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-bodaguy-600 transition-colors" aria-label="Twitter">
                 <Twitter size={20} />
               </a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-bodaguy-600 transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-bodaguy-600 transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/datfri/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-bodaguy-600 transition-colors" aria-label="LinkedIn">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -115,24 +112,24 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex gap-3 text-gray-600 text-sm">
                 <MapPin size={20} className="text-bodaguy-600 flex-shrink-0" />
-                <span>123 Market Street, Suite 100, San Francisco, CA 94103</span>
+                <span>P O BOX 171254 Ntinda Kampala Uganda</span>
               </li>
               <li>
                 <a 
-                  href="mailto:info@bodaguy.com" 
+                  href="mailto:lyanda.net@gmail.com" 
                   className="flex gap-3 text-gray-600 hover:text-bodaguy-600 transition-colors text-sm"
                 >
                   <Mail size={20} className="text-bodaguy-600 flex-shrink-0" />
-                  <span>info@bodaguy.com</span>
+                  <span>lyanda.net@gmail.com</span>
                 </a>
               </li>
               <li>
                 <a 
-                  href="tel:+1-800-BODAGUY" 
+                  href="tel:0393102562" 
                   className="flex gap-3 text-gray-600 hover:text-bodaguy-600 transition-colors text-sm"
                 >
                   <Phone size={20} className="text-bodaguy-600 flex-shrink-0" />
-                  <span>+1-800-BODAGUY</span>
+                  <span>0393102562</span>
                 </a>
               </li>
             </ul>
@@ -143,7 +140,7 @@ const Footer = () => {
         <div className="py-6 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © {currentYear} Bodaguy Inc. All rights reserved.
+              © {currentYear} Bodaguy Inc. Lyanda Technologies Limited. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link to="/privacy" className="text-gray-500 hover:text-bodaguy-600 text-sm">

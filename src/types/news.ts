@@ -1,4 +1,3 @@
-
 export interface NewsItem {
   id: string;
   title: string;
@@ -6,5 +5,5 @@ export interface NewsItem {
   date: string;
   image: string;
   category: string;
-  content?: string;
+  content: string;
 }

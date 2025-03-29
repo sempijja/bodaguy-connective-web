@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -20,8 +19,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { PhotoUploader } from "@/components/PhotoUploader";
+import { uploadPhoto, saveDriverApplication } from "@/lib/supabaseClient";
 
-// Form validation schema
+// Validation schema
 const formSchema = z.object({
   fullName: z.string().min(3, "Full name must be at least 3 characters"),
   nationalId: z
@@ -34,7 +34,7 @@ const formSchema = z.object({
   licenseNumber: z
     .string()
     .min(6, "Driver's license must be at least 6 characters"),
-  photo: z.instanceof(File, { message: "Photo is required" }).optional(),
+  photo: z.instanceof(File, { message: "Photo is required" }), // Photo is now required
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -57,25 +57,32 @@ const BecomeDriver = () => {
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
-    
-    // If photo exists, include it in the form data
-    if (photoFile) {
-      data.photo = photoFile;
-    }
 
     try {
-      // This would be replaced with actual API call to submit form
-      console.log("Form submitted with data:", data);
-      
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      
+      // Upload photo to Supabase Storage
+      let photoUrl = null;
+      if (photoFile) {
+        photoUrl = await uploadPhoto(photoFile);
+        if (!photoUrl) {
+          throw new Error("Failed to upload photo");
+        }
+      }
+
+      // Save form data to Supabase
+      await saveDriverApplication({
+        fullName: data.fullName,
+        nationalId: data.nationalId,
+        phoneNumber: data.phoneNumber,
+        licenseNumber: data.licenseNumber,
+        photoUrl,
+      });
+
       toast({
         title: "Application submitted!",
         description: "We'll review your information and contact you soon.",
         variant: "default",
       });
-      
+
       // Redirect to homepage after successful submission
       setTimeout(() => navigate("/"), 2000);
     } catch (error) {
@@ -90,9 +97,10 @@ const BecomeDriver = () => {
     }
   };
 
+  // Handle photo selection
   const handlePhotoSelected = (file: File) => {
     setPhotoFile(file);
-    form.setValue("photo", file);
+    form.setValue("photo", file, { shouldValidate: true }); // Trigger validation
   };
 
   return (
@@ -101,6 +109,7 @@ const BecomeDriver = () => {
         title="Become a Bodaguy Driver"
         description="Join Uganda's top delivery service. Earn competitive pay while delivering packages across Kampala and beyond."
         backgroundImage="https://images.unsplash.com/photo-1635335356074-a1ddda7ac4fc?q=80&w=2000&auto=format&fit=crop"
+        className="text-center"
       />
 
       <section className="container px-4 py-12 md:py-16 mx-auto max-w-3xl">

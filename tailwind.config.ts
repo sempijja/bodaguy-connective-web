@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -54,16 +53,17 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				bodaguy: {
-					50: '#f0f9ff',
-					100: '#e0f2fe',
-					200: '#bae6fd',
-					300: '#7dd3fc',
-					400: '#38bdf8',
-					500: '#0ea5e9',
-					600: '#0284c7',
-					700: '#0369a1',
-					800: '#075985',
-					900: '#0c4a6e',
+					50: '#EDF7F5',
+					100: '#DDEDEA',
+					200: '#ABD4CA',
+					300: '#81B8A9',
+					400: '#3E826C',
+					500: '#134d37', // Bodaguy primary color
+					600: '#10452F',
+					700: '#0B3823',
+					800: '#072E1A',
+					900: '#042111',
+					950: '#02170A',
 				},
 				bolt: {
 					50: '#f0fdf4',
@@ -76,6 +76,19 @@ export default {
 					700: '#15803d',
 					800: '#166534',
 					900: '#14532d',
+				},
+				transit: {
+					50: '#FFFDF2', 
+					100: '#FFFAE6', 
+					200: '#FFF2BF', 
+					300: '#FFE799', 
+					400: '#FFCC4D', 
+					500: '#ffa900', 
+					600: '#E69100', 
+					700: '#BF7000', 
+					800: '#995200', 
+					900: '#733700', 
+					950: '#4A2000'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',

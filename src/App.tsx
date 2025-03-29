@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -37,7 +36,7 @@ const App = () => (
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/become-driver" element={<BecomeDriver />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} /> {/* Catch-all route */}
           </Routes>
         </AnimatePresence>
       </BrowserRouter>

@@ -1,4 +1,3 @@
-
 export interface Author {
   name: string;
   avatar: string;
@@ -12,6 +11,6 @@ export interface BlogPost {
   readTime: string;
   image: string;
   category: string;
-  author: Author;
-  content?: string;
+  author: Author; // Single author
+  content: string;
 }

@@ -141,13 +141,13 @@ const Newsroom = () => {
             {/* Load More Button */}
             {filteredNews.length > 0 && (
               <div className="mt-12 text-center">
-                <Button 
-                  variant="outline" 
-                  className="rounded-full"
-                >
-                  Load More News
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+              <Button onClick={() => window.location.href = '/blog'}
+                variant="outline" 
+                className="rounded-full"
+              >
+                Load More News
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
               </div>
             )}
           </div>
@@ -165,18 +165,18 @@ const Newsroom = () => {
               </p>
               <div className="pt-4">
                 <a 
-                  href="mailto:press@bodaguy.com" 
+                  href="mailto:lyanda.net@gmail.com" 
                   className="text-bodaguy-600 font-medium hover:text-bodaguy-700 transition-colors"
                 >
-                  press@bodaguy.com
+                  lyanda.net@gmail.com
                 </a>
               </div>
               <div className="pt-2">
                 <a 
-                  href="tel:+256700123456" 
+                  href="tel:0393102562" 
                   className="text-bodaguy-600 font-medium hover:text-bodaguy-700 transition-colors"
                 >
-                  +256 700 123456
+                  0393102562
                 </a>
               </div>
             </div>

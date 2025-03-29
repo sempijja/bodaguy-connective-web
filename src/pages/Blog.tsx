@@ -145,7 +145,7 @@ const Blog = () => {
             {/* Load More Button */}
             {filteredPosts.length > 0 && (
               <div className="mt-12 text-center">
-                <Button
+                <Button onClick={() => alert('Load more articles')}
                   variant="outline"
                   className="rounded-full"
                 >

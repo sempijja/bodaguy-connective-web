@@ -1,4 +1,3 @@
-
 import { MapPin, Phone, Mail, Award, Users, TrendingUp } from 'lucide-react';
 import MainLayout from '@/layouts/MainLayout';
 import PageHeader from '@/components/PageHeader';
@@ -11,31 +10,31 @@ const About = () => {
       name: 'Pius Onapa',
       role: 'Founder/CEO',
       bio: 'Pius has been on the Ugandan start-up scene for more than 5 years and has since founded a number of products most in the transportatin space. He leads the company direction regards products, strategy and leads the data protection team. He is also founer of Lyanda Technologies the parent company for Bodaguy',
-      image: 'https://source.unsplash.com/random/400x400?man&sig=1'
+      image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/g_face/v1234567890/1742909629111_drdlrq'
     },
     {
       name: 'Ssempijja Charles',
       role: 'Head of Product',
       bio: 'Charles leads the product team, product design and developing product vision for the different products on the product portfolio at Bodaguy.',
-      image: 'https://source.unsplash.com/random/400x400?woman&sig=2'
+      image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/g_face/v1234567890/ssempijja-lyanda_kkqv3l'
     },
     {
       name: 'Muwonge Lawrence',
       role: 'CTO',
       bio: 'Lawrence is in charge of the engineering efforts at Bodaguy. He leads the mobile and web development teams to develop technologies that are usable at scale and secure enough for our users.',
-      image: 'https://source.unsplash.com/random/400x400?man&sig=3'
+      image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,z_1.0/v1234567890/WhatsApp_Image_2025-03-28_at_10.27.20_757d8a9b_utshr6_c_fill_ar_1_1_g_auto_ciivcn'
     },
     {
       name: 'Luwaga Meshach (Mulinsike)',
       role: 'Product Manager',
       bio: 'Meshach leads the efforts to design, develop and deploy products on time and in line with the business needs. He acts as the primary liaison between development, marketing and management to ensure alignment on priorities.',
-      image: 'https://source.unsplash.com/random/400x400?woman&sig=4'
-    }
+      image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/g_face,z_1.0/v1234567890/meshack-lyanda_ejufmb'
+    },
     {
       name: 'Chambaga Abdallah',
       role: 'Software Engineer',
       bio: 'Abdallah is in charge of building the frontend technologies for our different products and making sure that they are stable and scalable.',
-      image: 'https://source.unsplash.com/random/400x400?woman&sig=4'
+      image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/g_face/v1234567890/Chambaga_qn7tlw'
     }
   ];
   
@@ -62,7 +61,7 @@ const About = () => {
     <MainLayout>
       <PageTransition>
         <PageHeader
-          title="About Bodaguy"
+          title="About Boda Guy"
           description="We're on a mission to revolutionize the way packages are delivered."
         />
         
@@ -75,42 +74,41 @@ const About = () => {
                   <span className="flex h-2 w-2 rounded-full bg-bodaguy-600 mr-2"></span>
                   Our Story
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                  Connecting people through fast, reliable delivery
-                </h2>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
+                Connecting people <br className="hidden md:block" />
+                    <span className="text-transit-500">through fast, reliable delivery</span>
+                  </h1>
                 <p className="text-lg text-gray-600">
-                  Bodaguy was founded in 2024 with a simple mission: to make package delivery as easy as possible. We noticed a gap in the market for on-demand, reliable delivery services that could connect people who need to send packages with drivers ready to deliver them.
+                  Boda Guy was founded in 2024 with a simple mission: to make package delivery 
+                  as easy as possible. We are a technology company that connects the physical and digital worlds to help make deliveries happen at the tap of a button. 
                 </p>
                 <p className="text-lg text-gray-600">
                   What started as a small operation in Kampala that is over time growing to new cities. Our platform has facilitated deliveries, helping businesses grow and individuals save time.
-                </p>
-                <p className="text-lg text-gray-600">
-                  Today, we're proud to be a leading force in revolutionizing local delivery services with our technology-first approach and commitment to quality service.
                 </p>
               </div>
               
               <div className="relative animate-slide-up">
                 <div className="relative rounded-3xl overflow-hidden shadow-xl h-[500px]">
                   <img 
-                    src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" 
+                    src="https://res.cloudinary.com/dlkdmqaj3/image/upload/z_0.4/v1234567890/Phone_with_Case_Mockup_gfzgxq" 
                     alt="Bodaguy team at work"
                     className="w-full h-full object-cover"
                   />
-                </div>
+                </div> 
                 
                 {/* Stats overlay */}
                 <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200">
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <p className="text-3xl font-bold text-bodaguy-600">100K+</p>
+                      <p className="text-3xl font-bold text-bodaguy-600">100+</p>
                       <p className="text-sm text-gray-600">Deliveries</p>
                     </div>
                     <div>
-                      <p className="text-3xl font-bold text-bodaguy-600">5+</p>
+                      <p className="text-3xl font-bold text-bodaguy-600">2+</p>
                       <p className="text-sm text-gray-600">Cities</p>
                     </div>
                     <div>
-                      <p className="text-3xl font-bold text-bodaguy-600">3K+</p>
+                      <p className="text-3xl font-bold text-bodaguy-600">50+</p>
                       <p className="text-sm text-gray-600">Drivers</p>
                     </div>
                   </div>
@@ -132,9 +130,9 @@ const About = () => {
                 <span className="flex h-2 w-2 rounded-full bg-bodaguy-600 mr-2"></span>
                 Our Values
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
                 What drives us forward
-              </h2>
+              </h1>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Our core values guide everything we do, from how we develop our technology to how we treat our customers and drivers.
               </p>
@@ -166,9 +164,9 @@ const About = () => {
                 <span className="flex h-2 w-2 rounded-full bg-bodaguy-600 mr-2"></span>
                 Our Team
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Meet the team behind Bodaguy
-              </h2>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
+                Meet the team behind Boda Guy
+              </h1>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Our talented team is dedicated to creating the best delivery experience for our customers and drivers.
               </p>
@@ -233,8 +231,8 @@ const About = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Call Us</h3>
                 <p className="text-gray-600 mb-2">Customer Support</p>
-                <a href="tel:+18002345678" className="text-bodaguy-600 font-medium hover:text-bodaguy-700 transition-colors">
-                  +1 (800) 234-5678
+                <a href="tel:0393102554" className="text-bodaguy-600 font-medium hover:text-bodaguy-700 transition-colors">
+                0393102554
                 </a>
               </div>
               
@@ -244,8 +242,8 @@ const About = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Email Us</h3>
                 <p className="text-gray-600 mb-2">General Inquiries</p>
-                <a href="mailto:info@bodaguy.com" className="text-bodaguy-600 font-medium hover:text-bodaguy-700 transition-colors">
-                  info@bodaguy.com
+                <a href="mailto:lyanda.net@gmail.com" className="text-bodaguy-600 font-medium hover:text-bodaguy-700 transition-colors">
+                lyanda.net@gmail.com
                 </a>
               </div>
             </div>

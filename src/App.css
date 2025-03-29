@@ -1,3 +1,8 @@
+/* Define primary color variable */
+:root {
+  --primary-color: #134d37;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -12,7 +17,7 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em var(--primary-color));
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
@@ -35,8 +40,10 @@
 
 .card {
   padding: 2em;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .read-the-docs {
-  color: #888;
+  color: var(--primary-color);
 }

@@ -54,7 +54,7 @@ const PageHeader = ({
       )}>
         <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">{title}</h1>
         {description && (
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 ">
             {description}
           </p>
         )}

@@ -6,6 +6,20 @@ import FeatureCard from '@/components/FeatureCard';
 import DownloadApp from '@/components/DownloadApp';
 import PageTransition from '@/components/PageTransition';
 
+const userPhotos = [
+  "https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,w_100,h_100/v1234567890/Portrait_of_a_Smiling_Man_iqm27u",
+  "https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,w_100,h_100/v1234567890/Radiant_Portrait_k0trfc",
+  "https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,w_100,h_100/v1234567890/Striking_Portrait_of_a_Human_Subject_f8azu1",
+  "https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,w_100,h_100/v1234567890/Dapper_Young_Man_with_Stylish_Attire_and_Joyful_Smile_xw9mhw",
+];
+
+const companyLogos = [
+  "https://res.cloudinary.com/dlkdmqaj3/image/upload/v1234567890/LOGO-GREEN-03_v2htbr",
+  "https://res.cloudinary.com/dlkdmqaj3/image/upload/v1234567890/LOGO-GREEN-03_v2htbr",
+  "https://res.cloudinary.com/dlkdmqaj3/image/upload/v1234567890/LOGO-GREEN-03_v2htbr",
+  "https://res.cloudinary.com/dlkdmqaj3/image/upload/v1234567890/LOGO-GREEN-03_v2htbr",
+];
+
 const Index = () => {
   return (
     <MainLayout>
@@ -22,7 +36,7 @@ const Index = () => {
                   </div>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
                     Connect, deliver, <br className="hidden md:block" />
-                    <span className="text-bodaguy-600">simplify your life</span>
+                    <span className="text-transit-400">simplify your life</span>
                   </h1>
                   <p className="mt-6 text-lg text-gray-600 max-w-md">
                     Bodaguy connects drivers with customers for fast, reliable package delivery services across Uganda's cities.
@@ -44,18 +58,21 @@ const Index = () => {
                 <div className="pt-4 flex items-center space-x-6">
                   <div className="flex items-center space-x-2">
                     <div className="flex -space-x-3">
-                      {[1, 2, 3, 4].map((i) => (
-                        <div key={i} className="h-10 w-10 rounded-full bg-gray-200 border-2 border-white overflow-hidden">
+                      {userPhotos.map((photoUrl, index) => (
+                        <div
+                          key={index}
+                          className="h-10 w-10 rounded-full bg-gray-200 border-2 border-white overflow-hidden"
+                        >
                           <img
-                            src={`https://source.unsplash.com/random/100x100?face&sig=${i}`}
-                            alt="User"
+                            src={photoUrl}
+                            alt={`User ${index + 1}`}
                             className="h-full w-full object-cover"
                           />
                         </div>
                       ))}
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-sm font-medium">1,000+</span>
+                      <span className="text-sm font-medium">100+</span>
                       <span className="text-xs text-gray-500">Active Drivers</span>
                     </div>
                   </div>
@@ -68,7 +85,7 @@ const Index = () => {
                       ))}
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-sm font-medium">4.9/5</span>
+                      <span className="text-sm font-medium">4.9</span>
                       <span className="text-xs text-gray-500">Customer Rating</span>
                     </div>
                   </div>
@@ -78,9 +95,9 @@ const Index = () => {
               <div className="lg:w-1/2 relative animate-slide-up">
                 <div className="relative z-10">
                   <img 
-                    src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1200&q=80" 
-                    alt="Bodaguy delivery app" 
-                    className="w-full h-auto rounded-3xl border border-gray-200 shadow-xl"
+                  src="https://res.cloudinary.com/dlkdmqaj3/image/upload/z_1.5/v1234567890/591shots_so_occ7w0" 
+                  alt="Bodaguy delivery app" 
+                  className="w-full h-full object-cover rounded-3xl"
                   />
                 </div>
                 
@@ -97,9 +114,13 @@ const Index = () => {
               <h2 className="text-lg font-medium text-gray-600">Trusted by businesses across Uganda</h2>
             </div>
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
-              {Array(5).fill(0).map((_, i) => (
-                <div key={i} className="h-8 w-32">
-                  <div className="h-full w-full bg-gray-300 rounded-md animate-pulse"></div>
+              {companyLogos.map((logoUrl, index) => (
+                <div key={index} className="h-8 w-32 overflow-visible">
+                  <img 
+                  src={logoUrl} 
+                  alt={`Company Logo ${index + 1}`} 
+                  className="h-full w-full object-cover overflow-visible"
+                  />
                 </div>
               ))}
             </div>
@@ -111,7 +132,7 @@ const Index = () => {
           <div className="container px-4 md:px-6 mx-auto">
             <div className="text-center mb-16 animate-fade-in">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Why choose Bodaguy?
+                Why choose Boda Guy?
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 We offer a seamless delivery experience with features designed to make your life easier.
@@ -151,72 +172,71 @@ const Index = () => {
           </div>
         </section>
         
-        {/* How It Works Section */}
-        <section className="py-24 bg-gray-50">
-          <div className="container px-4 md:px-6 mx-auto">
-            <div className="text-center mb-16 animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                How it works
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Sending a package with Bodaguy is simple and straightforward.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  step: '01',
-                  title: 'Request a pickup',
-                  description: 'Open the app, enter pickup and dropoff locations, and select your package type.',
-                  image: 'https://images.unsplash.com/photo-1611746869696-d09bce200020?auto=format&fit=crop&w=600&q=80',
-                  delay: 0
-                },
-                {
-                  step: '02',
-                  title: 'Get matched with a driver',
-                  description: 'Our system automatically matches you with the closest available driver in your area.',
-                  image: 'https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?auto=format&fit=crop&w=600&q=80',
-                  delay: 100
-                },
-                {
-                  step: '03',
-                  title: 'Track & receive your package',
-                  description: 'Track your delivery in real-time and receive notifications on delivery status.',
-                  image: 'https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=600&q=80',
-                  delay: 200
-                }
-              ].map((item, index) => (
-                <div 
-                  key={index} 
-                  className={`relative bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-200 animate-slide-up [animation-delay:${item.delay}ms]`}
-                >
-                  <div className="aspect-w-16 aspect-h-9">
-                    <img 
-                      src={item.image} 
-                      alt={item.title} 
-                      className="object-cover w-full h-48"
-                    />
-                  </div>
-                  <div className="p-8">
-                    <div className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-bodaguy-50 text-bodaguy-600 font-bold text-lg mb-4">
-                      {item.step}
-                    </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
-                    <p className="text-gray-600">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+{/* How It Works Section */}
+<section className="py-24 bg-gray-50">
+  <div className="container px-4 md:px-6 mx-auto">
+    <div className="text-center mb-16 animate-fade-in">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        How it works
+      </h2>
+      <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        Sending a package with Boda Guy is simple and straightforward.
+      </p>
+    </div>
+    
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[
+        {
+          step: '01',
+          title: 'Request a pickup',
+          description: 'Open the app, enter pickup and dropoff locations, and select your package type.',
+          image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/c_scale,w_auto/v1234567890/requestdeliverystep_so_xrz8r9', 
+          delay: 0
+        },
+        {
+          step: '02',
+          title: 'Get matched with a driver',
+          description: 'Our system automatically matches you with the closest available driver in your area.',
+          image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/v1234567890/driverassignedstep_so_fjzioq', 
+          delay: 100
+        },
+        {
+          step: '03',
+          title: 'Track & receive your package',
+          description: 'Track your delivery in real-time and receive notifications on delivery status.',
+          image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/v1234567890/driverarrivedstep_so_oyv7rv', 
+        }
+      ].map((item, index) => (
+        <div 
+          key={index} 
+          className={`relative bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-200 animate-slide-up [animation-delay:${item.delay}ms]`}
+        >
+          <div className="aspect-w-16 aspect-h-9">
+            <img 
+              src={item.image} 
+              alt={item.title} 
+              className="object-cover w-full h-48"
+            />
           </div>
-        </section>
+          <div className="p-8">
+            <div className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-bodaguy-50 text-bodaguy-600 font-bold text-lg mb-4">
+              {item.step}
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+            <p className="text-gray-600">{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
         
         {/* Download App Section */}
         <section className="py-24 bg-bodaguy-600 text-white relative overflow-hidden">
           <div className="container px-4 md:px-6 mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-8 max-w-lg animate-fade-in">
-                <h2 className="text-3xl md:text-4xl font-bold">Get the Bodaguy app today</h2>
+                <h2 className="text-3xl md:text-4xl font-bold">Get the Boda Guy app today</h2>
                 <p className="text-lg text-white/80">
                   Download our app to send packages on-demand, track deliveries in real-time, and connect with reliable drivers in your area.
                 </p>
@@ -245,9 +265,9 @@ const Index = () => {
               </div>
               
               <div className="relative animate-float lg:ml-auto">
-                <div className="relative z-10 bg-gray-900 rounded-3xl shadow-xl overflow-hidden border border-gray-800 p-2">
+                <div className="relative z-10 bg-none rounded-3xl shadow-xl overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=600&q=80" 
+                    src="https://res.cloudinary.com/dlkdmqaj3/image/upload/v1234567890/footerimage_so_ek4gfh" 
                     alt="Bodaguy app"
                     className="w-full h-auto rounded-2xl"
                   />
@@ -285,21 +305,21 @@ const Index = () => {
                   quote: "Bodaguy has been a game-changer for my small business in Kampala. The delivery is always on time and the drivers are professional.",
                   author: "Sarah Nakato",
                   position: "Small Business Owner",
-                  avatar: "https://source.unsplash.com/random/100x100?face&sig=1",
+                  avatar: "https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,w_100,h_100/v1234567890/Radiant_Portrait_k0trfc",
                   delay: 0
                 },
                 {
                   quote: "I've been a Bodaguy driver for 6 months now and the flexibility is amazing. I can work when I want and earn good money across Kampala.",
                   author: "Michael Okello",
                   position: "Bodaguy Driver",
-                  avatar: "https://source.unsplash.com/random/100x100?face&sig=2",
+                  avatar: "https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,w_100,h_100/v1234567890/Dapper_Young_Man_with_Stylish_Attire_and_Joyful_Smile_xw9mhw",
                   delay: 100
                 },
                 {
                   quote: "The tracking feature is fantastic. I always know exactly where my package is and when it will arrive, even in Ugandan traffic. No more waiting around!",
                   author: "Alex Mugisha",
                   position: "Regular Customer",
-                  avatar: "https://source.unsplash.com/random/100x100?face&sig=3",
+                  avatar: "https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,w_100,h_100/v1234567890/Portrait_of_a_Smiling_Man_iqm27u",
                   delay: 200
                 }
               ].map((testimonial, index) => (
@@ -351,7 +371,7 @@ const Index = () => {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="rounded-full border-white/30 text-white hover:bg-white/10">
+                <Button asChild size="lg" variant="outline" className="rounded-full border-white/30 text-white bg-bodaguy-600 hover:bg-bodaguy-700">
                   <Link to="/become-driver">Become a Driver</Link>
                 </Button>
               </div>

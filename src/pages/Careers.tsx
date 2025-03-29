@@ -11,6 +11,7 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
 import PageTransition from '@/components/PageTransition';
+import { supabase } from '@/lib/supabaseClient';
 
 const Careers = () => {
   // Job categories
@@ -23,6 +24,7 @@ const Careers = () => {
   
   // Mock jobs data
   const jobs = [
+    /* To show this job (and add more) just remove this comment and make sure the id inceases +1. Add a comm(,) at the end of each object in the array to prevent errors
     {
       id: '1',
       title: 'Senior Software Engineer',
@@ -86,7 +88,7 @@ const Careers = () => {
       department: 'Engineering',
       type: 'Full-Time',
       description: "Analyze large datasets to extract insights that drive business decisions. You'll work on predictive models for demand forecasting, optimal routing, and driver matching algorithms."
-    }
+    } */
   ];
   
   // Filter jobs by department
@@ -101,14 +103,71 @@ const Careers = () => {
   };
   
   // Handle application submit
-  const handleSubmitApplication = (e: React.FormEvent) => {
+  const handleSubmitApplication = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsDialogOpen(false);
-    
-    toast({
-      title: "Application Submitted!",
-      description: `Thanks for applying to ${currentJob?.title}. We'll be in touch soon!`,
-    });
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const resumeFile = formData.get('resume') as File;
+
+    let resumeUrl = null;
+
+    try {
+      if (resumeFile) {
+        const fileName = `${Date.now()}-${resumeFile.name}`;
+        const { data, error: uploadError } = await supabase.storage
+          .from('resumes')
+          .upload(fileName, resumeFile);
+
+        if (uploadError) {
+          console.error('Error uploading resume:', uploadError);
+          toast({
+            title: 'Resume Upload Failed',
+            description: 'There was an error uploading your resume. Please try again later.',
+            variant: 'destructive',
+          });
+          return;
+        }
+
+        const { data: publicUrlData } = supabase.storage.from('resumes').getPublicUrl(fileName);
+        resumeUrl = publicUrlData?.publicUrl || null;
+        console.log('Resume uploaded successfully:', resumeUrl);
+      }
+
+      const applicationData = {
+        first_name: formData.get('first-name') as string,
+        last_name: formData.get('last-name') as string,
+        email: formData.get('email') as string,
+        phone: formData.get('phone') as string,
+        resume_url: resumeUrl,
+        cover_letter: formData.get('cover-letter') as string,
+        mailing_list: formData.get('mailing-list') === 'on',
+        job_title: currentJob?.title || 'General Application',
+        submitted_at: new Date().toISOString(),
+      };
+
+      console.log('Submitting application data:', applicationData);
+
+      const { error } = await supabase.from('job_applications').insert([applicationData]);
+
+      if (error) {
+        console.error('Error inserting application:', error);
+        throw error;
+      }
+
+      toast({
+        title: 'Application Submitted!',
+        description: `Thanks for applying to ${applicationData.job_title}. We'll be in touch soon!`,
+      });
+
+      setIsDialogOpen(false);
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      toast({
+        title: 'Submission Failed',
+        description: 'There was an error submitting your application. Please try again later.',
+        variant: 'destructive',
+      });
+    }
   };
   
   // Benefits data
@@ -189,28 +248,28 @@ const Careers = () => {
               <div className="grid grid-cols-2 gap-4 animate-slide-up">
                 <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-2xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" 
+                    src="https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,z_1.0/v1234567890/whole_team_simaot.jpg" 
                     alt="Bodaguy team working together"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
                 <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-2xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80" 
+                    src="https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,z_1.0/v1234567890/team_scetion_gfu0ie" 
                     alt="Bodaguy office environment"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
                 <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-2xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80" 
+                    src="https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,z_1.0/v1234567890/meshSTI_jsnqaf" 
                     alt="Team brainstorming session"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
                 <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-2xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=600&q=80" 
+                    src="https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,z_1.0/v1234567890/charz_confrence_ol7hgd" 
                     alt="Company celebration"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
@@ -349,36 +408,36 @@ const Careers = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="first-name">First name</Label>
-                  <Input id="first-name" required />
+                  <Input id="first-name" name="first-name" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="last-name">Last name</Label>
-                  <Input id="last-name" required />
+                  <Input id="last-name" name="last-name" required />
                 </div>
               </div>
               
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" required />
+                <Input id="email" name="email" type="email" required />
               </div>
               
               <div className="space-y-2">
                 <Label htmlFor="phone">Phone number</Label>
-                <Input id="phone" type="tel" required />
+                <Input id="phone" name="phone" type="tel" required />
               </div>
               
               <div className="space-y-2">
                 <Label htmlFor="resume">Resume</Label>
-                <Input id="resume" type="file" className="cursor-pointer" required />
+                <Input id="resume" name="resume" type="file" className="cursor-pointer" required />
               </div>
               
               <div className="space-y-2">
                 <Label htmlFor="cover-letter">Cover letter</Label>
-                <Textarea id="cover-letter" rows={4} placeholder="Tell us why you're interested in this position and what makes you a great fit." />
+                <Textarea id="cover-letter" name="cover-letter" rows={4} placeholder="Tell us why you're interested in this position and what makes you a great fit." />
               </div>
               
               <div className="flex items-center space-x-2">
-                <Switch id="mailing-list" />
+                <Switch id="mailing-list" name="mailing-list" />
                 <Label htmlFor="mailing-list">Join our talent network for future opportunities</Label>
               </div>
               

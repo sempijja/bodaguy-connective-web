@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -10,7 +9,7 @@ import { Button } from "@/components/ui/button";
 // Define navigation items
 const navItems = [
   { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
+  { name: 'About Us', href: '/about' },
   { name: 'Newsroom', href: '/newsroom' },
   { name: 'Blog', href: '/blog' },
   { name: 'Careers', href: '/careers' },
@@ -56,12 +55,12 @@ const Navbar = () => {
           to="/"
           className="flex items-center gap-2 font-bold text-xl text-bodaguy-700 hover:text-bodaguy-600 transition-colors"
         >
-          <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="48" height="48" rx="12" fill="#0EA5E9"/>
-            <path d="M14 18C14 15.7909 15.7909 14 18 14H30C32.2091 14 34 15.7909 34 18V30C34 32.2091 32.2091 34 30 34H18C15.7909 34 14 32.2091 14 30V18Z" fill="white"/>
-            <path d="M22 20L26 24L22 28" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span className="hidden sm:inline">Bodaguy</span>
+          <img 
+            src="https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,z_1.0/v1234567890/android-icon-48x48_htru7i" 
+            alt="Boda Guy Logo" 
+            className="h-8 w-8 rounded-[8px]"
+          />
+          <span className="hidden sm:inline">Boda Guy</span>
         </Link>
         
         {/* Desktop Navigation */}
