@@ -28,7 +28,7 @@ const About = () => {
       name: 'Luwaga Meshach (Mulinsike)',
       role: 'Product Manager',
       bio: 'Meshach leads the efforts to design, develop and deploy products on time and in line with the business needs. He acts as the primary liaison between development, marketing and management to ensure alignment on priorities.',
-      image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/g_face,z_1.0/v1234567890/meshack-lyanda_ejufmb'
+      image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/g_face,z_1.0/v1234567890/photo_5998942317844744230_y_bqsno5'
     },
     {
       name: 'Chambaga Abdallah',

@@ -165,10 +165,10 @@ const Newsroom = () => {
               </p>
               <div className="pt-4">
                 <a 
-                  href="mailto:lyanda.net@gmail.com" 
+                  href="mailto:bodaguyfrieght@gmail.com" 
                   className="text-bodaguy-600 font-medium hover:text-bodaguy-700 transition-colors"
                 >
-                  lyanda.net@gmail.com
+                  bodaguyfrieght@gmail.com
                 </a>
               </div>
               <div className="pt-2">
