@@ -1,6 +1,6 @@
-
 import { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import MainLayout from '@/layouts/MainLayout';
 import PageHeader from '@/components/PageHeader';
 import BlogPostCard from '@/components/BlogPostCard';
@@ -12,6 +12,8 @@ import { fetchBlogPosts, fetchBlogCategories } from '@/cms';
 import type { BlogPost } from '@/types/blog';
 
 const Blog = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
   // Blog state
   const [categories, setCategories] = useState<string[]>([]);
   const [activeCategory, setActiveCategory] = useState('All');
@@ -145,7 +147,8 @@ const Blog = () => {
             {/* Load More Button */}
             {filteredPosts.length > 0 && (
               <div className="mt-12 text-center">
-                <Button onClick={() => alert('Load more articles')}
+                <Button
+                  onClick={() => navigate("/blog")} // Navigate to the blogs page
                   variant="outline"
                   className="rounded-full"
                 >
