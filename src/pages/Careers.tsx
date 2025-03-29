@@ -262,7 +262,7 @@ const Careers = () => {
                 </div>
                 <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-2xl">
                   <img 
-                    src="https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,z_1.0/v1234567890/meshSTI_jsnqaf" 
+                    src="https://res.cloudinary.com/dlkdmqaj3/image/upload/c_thumb,g_face,z_1.0/v1234567890/photo_5998942317844744230_y_bqsno5" 
                     alt="Team brainstorming session"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />

@@ -9,7 +9,7 @@ const About = () => {
     {
       name: 'Pius Onapa',
       role: 'Founder/CEO',
-      bio: 'Pius has been on the Ugandan start-up scene for more than 6 years and has since founded a number of products most in the transportatin space. He leads the company direction regards products, strategy and leads the data protection team. He is also founer of Lyanda Technologies the parent company for Bodaguy',
+      bio: 'Pius has been on the Ugandan start-up scene for more than 6 years and has since founded a number of products most in the transportation space. He leads the company direction regards products, strategy and leads the data protection team. He is also founer of Lyanda Technologies the parent company for Boda Guy',
       image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/g_face/v1234567890/1742909629111_drdlrq'
     },
     {
@@ -28,7 +28,7 @@ const About = () => {
       name: 'Luwaga Meshach (Mulinsike)',
       role: 'Product Manager',
       bio: 'Meshach leads the efforts to design, develop and deploy products on time and in line with the business needs. He acts as the primary liaison between development, marketing and management to ensure alignment on priorities.',
-      image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/g_face,z_1.0/v1234567890/photo_5998942317844744230_y_bqsno5'
+      image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/g_face,z_1.0/v1234567890/meshack-lyanda_ejufmb'
     },
     {
       name: 'Chambaga Abdallah',
