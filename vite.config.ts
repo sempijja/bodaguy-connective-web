@@ -1,27 +1,23 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 
-export default defineConfig(({ mode }) => {
-  return {
-    server: {
-      host: "::",
-      port: 8080,
-      // Ensure all routes fallback to index.html
-      fs: {
-        strict: false,
+export default defineConfig({
+  base: "/", // Set the base path to the root
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        // Ensure assets are correctly resolved
+        assetFileNames: "assets/[name]-[hash][extname]",
       },
     },
-    base: '/bodaguy-website/', // Replace with your repository name
-    plugins: [
-      react(),
-      ...(mode === 'development' ? [componentTagger()] : []), // Avoid `false` in plugins
-    ],
-    resolve: {
-      alias: {
-        "@": path.resolve(__dirname, "./src"),
-      },
-    },
-  };
+  },
+  // Add the CNAME file to the output directory
+  publicDir: "public", // Ensure public assets like CNAME are copied to dist
 });
