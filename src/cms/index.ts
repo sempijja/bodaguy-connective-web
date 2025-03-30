@@ -39,7 +39,7 @@ const blogPosts: BlogPost[] = [
       <h2>The Digital Transformation</h2> <br>
       <p>Traditionally, Ugandan businesses relied heavily on walk-in customers and word-of-mouth marketing. However, with smartphone penetration increasing across the country, consumers are increasingly looking for convenience in how they access products and services.</p>
       
-      <p>On-demand delivery platforms like Bodaguy are bridging the gap between traditional businesses and digital-savvy consumers, creating a new ecosystem that benefits both parties.</p>
+      <p>On-demand delivery platforms like Boda Guy are bridging the gap between traditional businesses and digital-savvy consumers, creating a new ecosystem that benefits both parties.</p>
        <br>
       <h2>Impact on Small Businesses</h2> <br>
       <p>For small business owners in Uganda, partnering with delivery services has opened up new markets and revenue streams. Local restaurants, grocery stores, and specialty shops that previously served only their immediate neighborhoods can now reach customers across entire cities.</p>
@@ -166,60 +166,78 @@ const blogPosts: BlogPost[] = [
 const newsItems: NewsItem[] = [
   {
     id: '1',
-    title: 'Bodaguy Secures $30M in Funding to Expand Operations Across Uganda',
-    excerpt: 'The new funding will enable Bodaguy to expand its services to 15 new cities across Uganda and enhance its technology platform for both drivers and customers.',
-    date: '2023-06-15',
-    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80',
-    category: 'Press Releases',
+    title: 'Building Boda Guy: Engineering a Scalable Ride-Hailing and Delivery Platform',
+    excerpt: 'A deep dive into the technology and engineering decisions behind Boda Guy, Uganda’s newest ride-hailing and delivery platform, and how we built a seamless experience for riders and customers alike.',
+    date: '2025-01-15',
+    image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/g_face/v1234567890/pexels-divinetechygirl-1181244_yuyhvp',
+    category: 'Engineering',
     content: `
-      <p><strong>KAMPALA, UGANDA</strong> - Bodaguy, Uganda's leading on-demand delivery platform, today announced it has secured $30 million in Series B funding led by African Technology Ventures, with participation from existing investors Global Innovation Fund and East African Capital.</p>
+      <p><strong>KAMPALA, UGANDA</strong> - As we gear up for the official launch of Boda Guy, we want to take a moment to reflect on the engineering and technical choices that went into building a robust, scalable, and user-friendly platform. Boda Guy is more than just another ride-hailing app; it’s a full-fledged ecosystem designed to optimize transportation and delivery services across Uganda.</p>
       <br>
-      <p>This significant investment will fuel Bodaguy's expansion beyond Kampala to 15 additional cities across Uganda, including Jinja, Mbarara, Gulu, and Entebbe. The funding will also support substantial enhancements to the company's technology platform, benefiting both delivery partners and customers.</p>
+      <h3>Our Core Technology Stack</h3>
+      <p>From the outset, we focused on scalability, performance, and ease of use. Our backend is built on <strong>Node.js</strong> with a microservices architecture, leveraging <strong>PostgreSQL</strong> for structured data and <strong>Redis</strong> for caching frequently accessed queries. The frontend is powered by <strong>React Native</strong>, allowing us to deliver a seamless experience across both iOS and Android. We also use <strong>GraphQL</strong> to streamline API queries, improving efficiency for both frontend and backend interactions.</p>
       <br>
-      <p>"This investment marks a pivotal moment in Bodaguy's journey," said Emmanuel Okiror, CEO and founder of Bodaguy. "Since launching in Kampala three years ago, we've demonstrated the enormous potential for efficient, technology-driven delivery services in Uganda. With this funding, we're ready to bring our platform to more Ugandans and continue innovating to meet the unique needs of our market."</p>
+      <h3>Solving the Challenge of Real-Time Routing and Tracking</h3>
+      <p>One of the biggest engineering challenges we faced was optimizing real-time routes for both ride-hailing and deliveries. Uganda’s road infrastructure is constantly changing, with congestion, roadworks, and unmarked paths making navigation difficult. To solve this, we integrated <strong>Google Maps API</strong> and <strong>OpenStreetMap</strong>, layering them with custom machine-learning models that predict traffic flow based on historical data.</p>
+      <p>For real-time tracking, we implemented <strong>WebSockets</strong> and <strong>MQTT</strong>, ensuring minimal latency when updating riders and customers about their trip status. Our dynamic traffic analysis system also recalculates the best routes mid-trip, helping drivers avoid unnecessary delays.</p>
       <br>
-      <p>The company plans to use the funds to:</p>
+      <h3>Seamless Payment Integration and Wallet System</h3>
+      <p>Payment is a crucial component of the Boda Guy experience. We integrated mobile money services like <strong>MTN MoMo</strong> and <strong>Airtel Money</strong> to make transactions accessible to all. Additionally, we support traditional card payments through <strong>Flutterwave</strong>. To enhance convenience, we introduced an in-app wallet that allows users to preload funds, reducing transaction friction for frequent riders.</p>
+      <p>For security, our payment systems are PCI-DSS compliant, using tokenization to prevent fraud and unauthorized transactions. We also built an automated refund system, allowing customers to get instant credits in case of cancellations.</p>
       <br>
+      <h3>Battery Booking and IoT Integration</h3>
+      <p>Since Boda Guy is heavily invested in electric bikes, we needed a system to manage battery swapping efficiently. We built a <strong>Battery Booking</strong> system that lets riders reserve batteries at charging stations in advance. This system integrates IoT sensors within each station to provide real-time updates on battery availability.</p>
+      <p>To extend battery life and reduce downtime, we developed an AI-driven predictive maintenance system that analyzes battery performance and suggests optimal charging cycles. This ensures that riders always get a fully charged and well-maintained battery whenever they need it.</p>
+      <br>
+      <h3>Ensuring Scalability and High Availability</h3>
+      <p>With an anticipated surge in demand, we designed Boda Guy’s backend for high scalability. Our cloud infrastructure is built on <strong>AWS</strong>, utilizing auto-scaling groups to handle traffic spikes. Kubernetes orchestrates our microservices, while <strong>NGINX</strong> serves as our load balancer.</p>
+      <p>For monitoring and troubleshooting, we use <strong>Prometheus</strong> and <strong>Grafana</strong>, giving us real-time visibility into system health. In case of failures, our distributed logging system (ELK stack: Elasticsearch, Logstash, Kibana) helps us quickly diagnose and resolve issues.</p>
+      <br>
+      <h3>Security and User Privacy</h3>
+      <p>Security is a top priority at Boda Guy. We implemented OAuth 2.0 authentication, role-based access control (RBAC) for different user types, and AES encryption for sensitive data storage. Additionally, we comply with Uganda’s Data Protection Act to safeguard user information.</p>
+      <p>To prevent fraud, our AI-based fraud detection system monitors transaction patterns and flags suspicious activities. We also conduct regular penetration testing to identify vulnerabilities and patch them proactively.</p>
+      <br>
+      <h3>Optimizing the Driver and Rider Experience</h3>
+      <p>Ensuring a smooth experience for both drivers and riders was a priority. Our driver app includes earnings insights, real-time trip recommendations, and GPS-based analytics to maximize earnings. On the rider side, we introduced an AI-powered fare estimation tool that provides cost predictions based on demand, traffic, and route complexity.</p>
+      <p>We also built an in-app customer support system that connects users directly to agents via chat or call, ensuring that any issues are resolved swiftly.</p>
+      <br>
+      <h3>Leveraging AI for Smart Decision-Making</h3>
+      <p>Machine learning plays a vital role in Boda Guy’s operations. We use AI models for:</p>
       <ul>
-        <li>Launch operations in 15 new cities by the end of 2024</li>
-        <li>Enhance its routing and matching algorithms to improve delivery efficiency</li>
-        <li>Expand its merchant network to include more local businesses</li>
-        <li>Implement a comprehensive training program for delivery partners</li>
-        <li>Develop new features specifically designed for the Ugandan market</li>
+        <li><strong>Smart fare estimation:</strong> Adjusting ride prices dynamically based on demand and distance.</li>
+        <li><strong>Fraud detection:</strong> Identifying suspicious activities and preventing unauthorized transactions.</li>
+        <li><strong>Personalized recommendations:</strong> Suggesting rides, routes, and promotions based on user behavior.</li>
+        <li><strong>Driver matching:</strong> Predicting the best driver for a trip based on location, experience, and traffic conditions.</li>
       </ul>
+      <p>By constantly refining these models, we ensure that Boda Guy remains efficient and responsive to user needs.</p>
       <br>
-      <p>Sarah Kiwanuka, Partner at African Technology Ventures, commented: "Bodaguy has built an impressive platform that addresses the unique challenges of last-mile delivery in Uganda. Their deep understanding of local market dynamics and commitment to developing tailored solutions sets them apart in the rapidly growing African logistics space."</p>
+      <h3>What’s Next for Boda Guy?</h3>
+      <p>With our upcoming launch in Kampala, our focus will shift to expanding across Uganda. In the next 12 months, we aim to:</p>
+      <ul>
+        <li>Expand operations to 10 additional cities.</li>
+        <li>Enhance AI-driven route prediction to further optimize travel times.</li>
+        <li>Introduce new safety features, such as real-time hazard detection for riders.</li>
+        <li>Launch a corporate package for businesses that need regular deliveries.</li>
+        <li>Partner with local merchants for last-mile e-commerce logistics.</li>
+      </ul>
+      <p>We are also working on integrating electric vehicle incentives, providing riders with benefits for using eco-friendly transportation.</p>
       <br>
-      <p>The company has seen remarkable growth since its inception, with order volumes increasing by 300% in the past year alone. Bodaguy currently partners with over 2,000 merchants and works with more than 5,000 delivery drivers across Kampala.</p>
-      <br>
-      <p>As part of its expansion, Bodaguy expects to create opportunities for an additional 10,000 delivery partners over the next two years, contributing significantly to job creation in the communities it serves.</p>
-      <br>
-      <p>For more information about Bodaguy and its services, visit <a href="https://www.bodaguy.com">www.bodaguy.com</a>.</p>
-      <br>
-      <h3>About Bodaguy</h3>
-      <p>Bodaguy is Uganda's leading on-demand delivery platform, connecting customers with local businesses and efficient delivery services. Founded in 2020, the company has revolutionized how goods are transported across Kampala through its innovative technology and commitment to excellent service. Bodaguy works with a wide range of merchants, from restaurants and grocery stores to pharmacies and retail shops, making local commerce more accessible for all Ugandans.</p>
-      <br>
-      <h3>Media Contact</h3>
-      <p>
-      Luwaga Meshack<br>
-      Product Manager<br>
-      lyanda.net@gmail.com<br>
-      </p>
+      <p>Stay tuned as we continue refining and improving Boda Guy. We are excited to introduce Uganda to a smarter, more efficient way to ride and deliver goods.</p>
     `
   },
   {
     id: '2',
-    title: 'Bodaguy Launches New Same-Day Delivery Service for Ugandan Businesses',
+    title: 'Boda Guy Launches New Same-Day Delivery Service for Ugandan Businesses',
     excerpt: 'Business customers in Kampala can now offer same-day delivery to their customers through Bodaguy\'s expanded delivery network and optimized routing technology.',
-    date: '2023-05-22',
+    date: '2025-02-22',
     image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/z_0.4/v1234567890/Phone_with_Case_Mockup_gfzgxq',
     category: 'Product Updates',
     content: `
-      <p><strong>KAMPALA, UGANDA</strong> - Bodaguy today announced the launch of its new same-day delivery service designed specifically for business customers in Kampala. The service enables local businesses to offer their customers reliable same-day delivery, helping them compete with larger e-commerce platforms.</p>
+      <p><strong>KAMPALA, UGANDA</strong> - Boda Guy today announced the launch of its new same-day delivery service designed specifically for business customers in Kampala. The service enables local businesses to offer their customers reliable same-day delivery, helping them compete with larger e-commerce platforms.</p>
       <br>
-      <p>The new offering, called "Bodaguy Business Express," leverages the company's extensive network of delivery partners and its proprietary routing technology to ensure efficient and timely deliveries even during Kampala's busy traffic hours.</p>
+      <p>The new offering, called "Boda Guy Business Express," leverages the company's extensive network of delivery partners and its proprietary routing technology to ensure efficient and timely deliveries even during Kampala's busy traffic hours.</p>
       <br>
-      <p>"We've been listening carefully to the needs of Ugandan businesses," said Florence Nakimuli, Chief Product Officer at Bodaguy. "Time and again, we heard that reliable same-day delivery is essential for them to meet customer expectations. With Bodaguy Business Express, we're providing a solution that helps local businesses thrive in an increasingly competitive market."</p>
+      <p>"We've been listening carefully to the needs of Ugandan businesses," said Ssempijja Charles, Chief Product Officer at Bodaguy. "Time and again, we heard that reliable same-day delivery is essential for them to meet customer expectations. With Boda Guy Business Express, we're providing a solution that helps local businesses thrive in an increasingly competitive market."</p>
       <br>
       <p>Key features of the new service include:</p>
       <br>

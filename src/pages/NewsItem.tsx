@@ -154,11 +154,11 @@ const NewsItemPage = () => {
                 For more information about this news, please contact our media relations team:
               </p>
               <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 text-bodaguy-600">
-                <a href="mailto:press@bodaguy.com" className="hover:text-bodaguy-700 transition-colors">
-                  press@bodaguy.com
+                <a href="mailto:bodaguyfreight@gmail.com" className="hover:text-bodaguy-700 transition-colors">
+                bodaguyfreight@gmail.com
                 </a>
-                <a href="tel:+256700123456" className="hover:text-bodaguy-700 transition-colors">
-                  +256 700 123456
+                <a href="tel:+0393102562" className="hover:text-bodaguy-700 transition-colors">
+                0393102562
                 </a>
               </div>
             </div>
