@@ -170,7 +170,7 @@ const newsItems: NewsItem[] = [
     excerpt: 'A deep dive into the technology and engineering decisions behind Boda Guy, Uganda’s newest ride-hailing and delivery platform, and how we built a seamless experience for riders and customers alike.',
     date: '2025-01-15',
     image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/g_face/v1234567890/pexels-divinetechygirl-1181244_yuyhvp',
-    category: 'Engineering',
+    category: 'Product Updates',
     content: `
       <p><strong>KAMPALA, UGANDA</strong> - As we gear up for the official launch of Boda Guy, we want to take a moment to reflect on the engineering and technical choices that went into building a robust, scalable, and user-friendly platform. Boda Guy is more than just another ride-hailing app; it’s a full-fledged ecosystem designed to optimize transportation and delivery services across Uganda.</p>
       <br>
@@ -258,32 +258,106 @@ const newsItems: NewsItem[] = [
   },
   {
     id: '3',
-    title: 'Bodaguy Partners with Major Retail Chain to Handle Last-Mile Delivery Across Uganda',
-    excerpt: 'The partnership will allow the retail chain to offer faster delivery options to customers while leveraging Bodaguy\'s extensive network of delivery drivers throughout Uganda.',
+    title: 'How Products Are Built at Boda Guy',
+    excerpt: 'A behind-the-scenes look at the product development process at Boda Guy, from ideation to launch, and how we ensure that our products meet the needs of our users.',
     date: '2025-01-18',
-    image: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=1200&q=80',
-    category: 'Company News',
+    image: 'https://res.cloudinary.com/dlkdmqaj3/image/upload/z_0.4/v1234567890/pexels-huy-phan-316220-31388430_xn2czk',
+    category: 'Product Updates',
     content: `
-      <p><strong>KAMPALA, UGANDA</strong> - Bodaguy and SuperMart, one of Uganda's largest retail chains, today announced a strategic partnership that will revolutionize how SuperMart delivers products to customers across the country. Under the agreement, Bodaguy will become the exclusive last-mile delivery partner for SuperMart's online orders in all regions where both companies operate.</p>
-      <br>
-      <p>The partnership comes as e-commerce continues to grow rapidly in Uganda, with more consumers expecting fast and reliable delivery options. By leveraging Bodaguy's technology platform and extensive network of delivery partners, SuperMart aims to significantly improve delivery times and provide customers with a more transparent and efficient delivery experience.</p>
-      <br>
-      <p>"This collaboration represents an important step in our digital transformation journey," said Robert Kigongo, CEO of SuperMart. "Bodaguy's innovative approach to last-mile delivery aligns perfectly with our commitment to providing exceptional service to our customers. Together, we'll set a new standard for retail delivery in Uganda."</p>
-      <br>
-      <p>Through this partnership:</p>
-      <br>
-      <ul>
-        <li>SuperMart customers will benefit from real-time tracking of their deliveries</li>
-        <li>Delivery times are expected to improve by up to 40% in urban areas</li>
-        <li>The service will eventually extend to all 20 cities where SuperMart operates</li>
-        <li>Customers will have access to more flexible delivery windows, including same-day options</li>
-      </ul>
-      <br>
-      <p>"We're thrilled to partner with SuperMart, a company that shares our commitment to innovation and customer satisfaction," said Emmanuel Okiror, CEO of Bodaguy. "This partnership demonstrates how traditional retail and technology companies can work together to create better experiences for Ugandan consumers."</p>
-      <br>
-      <p>The integrated delivery service will launch first in Kampala this month, followed by a phased rollout to other major cities including Entebbe, Jinja, and Mbarara. The companies expect to cover all SuperMart locations by the end of the year.</p>
-      <br>
-      <p>This partnership marks another significant milestone for Bodaguy, which has been expanding its business services division to complement its consumer-facing delivery platform.</p>
+        <p><strong>KAMPALA, UGANDA</strong> - At Boda Guy, we don’t just build software; we craft seamless mobility and logistics solutions that empower businesses and individuals across Uganda. From the first line of code to the final user experience, every product at Boda Guy is designed with <strong>scalability, reliability, and user satisfaction</strong> in mind.</p>
+
+    <br>
+
+    <p>Our engineering philosophy is driven by three core principles: <strong>speed, efficiency, and adaptability</strong>. The ride-hailing and last-mile delivery industry demands real-time solutions that function flawlessly under high loads, and that’s exactly what we optimize for. Let’s take a deep dive into how we bring products to life at Boda Guy.</p>
+
+    <br>
+
+    <h2>1. Microservices Architecture for Scalability</h2>
+
+    <br>
+
+    <p>Boda Guy’s platform is built using a <strong>microservices architecture</strong>, allowing each service—such as ride matching, payments, and geolocation—to function independently while communicating via lightweight <strong>GraphQL APIs</strong>. This modular approach ensures that our platform can handle high traffic volumes without compromising performance.</p>
+
+    <br>
+
+    <p>"We chose microservices because we needed a system that scales effortlessly. Whether it’s handling thousands of concurrent ride requests or processing bulk deliveries, every component operates independently while maintaining a seamless user experience," said <strong>Muwonge Lawrence, Lead Software Engineer at Boda Guy</strong>.</p>
+
+    <br>
+
+    <h2>2. AI-Powered Ride and Delivery Matching</h2>
+
+    <br>
+
+    <p>One of the most complex challenges in ride-hailing and logistics is efficient dispatching. To tackle this, we use <strong>AI-driven matching algorithms</strong> that pair customers with the nearest available riders based on traffic conditions, estimated delivery times, and rider availability.</p>
+
+    <br>
+
+    <p>"Our AI models constantly analyze demand patterns, rider locations, and estimated delivery times. This helps us assign the best possible driver for every trip while reducing idle time for our riders," said <strong> Ssempijja Charles, Head of Product at Boda Guy</strong>.</p>
+
+    <br>
+
+    <h2>3. Real-Time Tracking & Smart Routing</h2>
+
+    <br>
+
+    <p>Boda Guy’s <strong>real-time tracking engine</strong> is powered by <strong>WebSockets, MQTT, and geospatial data processing</strong>. This enables customers to see their rider’s exact location and estimated arrival time at all times.</p>
+
+    <br>
+
+    <p>For navigation, we use <strong>a hybrid approach combining Google Maps, OpenStreetMap (OSM), and AI-powered routing</strong>. This allows us to dynamically reroute deliveries and rides based on live traffic updates.</p>
+
+    <br>
+
+    <p>"Traditional mapping APIs don’t always capture local traffic realities in Uganda. By integrating OpenStreetMap with our own traffic data, we’ve significantly improved ETAs, especially during peak hours," said <strong>Abdul, Software Engineer at Boda Guy</strong>.</p>
+
+    <br>
+
+    <h2>4. Secure & Seamless Payments</h2>
+
+    <br>
+
+    <p>Payments are at the heart of Boda Guy’s operations. We’ve built a <strong>multi-layered payment infrastructure</strong> that supports <strong>MTN MoMo, Airtel Money, Visa, and Flutterwave-powered card transactions</strong>.</p>
+
+    <br>
+
+    <p>Security is a top priority, and we implement <strong>PCI-DSS compliance, AES-256 encryption, and AI-based fraud detection</strong> to prevent unauthorized transactions.</p>
+
+    <br>
+
+    <h2>5. Engineering for Reliability & High Availability</h2>
+
+    <br>
+
+    <p>To guarantee <strong>99.9% uptime</strong>, Boda Guy leverages <strong>AWS Auto Scaling, Kubernetes, and Prometheus monitoring</strong>. Our cloud infrastructure is designed to handle <strong>spikes in demand</strong>, whether it's a surge of ride requests during a festival or an increase in deliveries during peak shopping hours.</p>
+
+    <br>
+
+    <h2>6. The Road Ahead: Future Innovations at Boda Guy</h2>
+
+    <br>
+
+    <p>As we continue to evolve, Boda Guy is focused on <strong>expanding its AI capabilities, launching autonomous ride matching, and integrating blockchain for payment transparency</strong>. In the next 12 months, we aim to roll out:</p>
+
+    <br>
+
+    <ul>
+        <li><strong>Predictive demand models</strong> to forecast peak hours more accurately</li>
+        <li><strong>Cashless-only service zones</strong> to enhance safety and efficiency</li>
+        <li><strong>Corporate logistics dashboards</strong> for business clients</li>
+        <li><strong>Expansion into East African markets</strong>, starting with Kenya and Rwanda</li>
+    </ul>
+
+    <br>
+
+    <p>"At Boda Guy, we’re not just building a ride-hailing app—we’re engineering the future of urban mobility in Africa," said <strong>Pius Onapa, CEO of Boda Guy</strong>.</p>
+
+    <br>
+
+    <p>Stay tuned as we continue to push the boundaries of innovation in Uganda’s ride-hailing and last-mile delivery industry.</p>
+
+    <br>
+
+    <p>🚀 <strong>Want to join us?</strong> Boda Guy is hiring engineers, designers, and data scientists. Visit our careers page to learn more!</p>
     `
   }
 ];
