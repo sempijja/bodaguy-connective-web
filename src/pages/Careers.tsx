@@ -24,71 +24,56 @@ const Careers = () => {
   
   // Mock jobs data
   const jobs = [
-    /* To show this job (and add more) just remove this comment and make sure the id inceases +1. Add a comm(,) at the end of each object in the array to prevent errors
     {
       id: '1',
-      title: 'Senior Software Engineer',
-      location: 'San Francisco, CA',
-      department: 'Engineering',
-      type: 'Full-Time',
-      description: "Join our engineering team to build and scale our delivery platform. You'll work on challenging problems related to routing algorithms, real-time tracking, and mobile app development."
-    },
-    {
-      id: '2',
-      title: 'Product Manager',
-      location: 'Remote (US)',
-      department: 'Product',
-      type: 'Full-Time',
-      description: "Lead product initiatives from conception to launch. You'll work closely with engineering, design, and business teams to define product strategy and roadmap for our delivery platform."
-    },
-    {
-      id: '3',
-      title: 'UI/UX Designer',
-      location: 'New York, NY',
-      department: 'Design',
-      type: 'Full-Time',
-      description: "Create beautiful, intuitive designs for our mobile apps and website. You'll be responsible for the entire design process, from user research to visual design and prototyping."
-    },
-    {
-      id: '4',
-      title: 'Growth Marketing Manager',
-      location: 'Los Angeles, CA',
-      department: 'Marketing',
-      type: 'Full-Time',
-      description: "Drive customer acquisition and retention strategies. You'll be responsible for creating and executing marketing campaigns to grow our user base of both customers and drivers."
-    },
-    {
-      id: '5',
-      title: 'Operations Coordinator',
-      location: 'Chicago, IL',
+      title: 'Operations Associate (Growth & Marketing)',
+      location: 'Kampala, Uganda',
       department: 'Operations',
       type: 'Full-Time',
-      description: "Help manage day-to-day operations, including driver onboarding, customer service escalations, and ensuring smooth delivery operations across our service areas."
+      description: `
+      We are seeking a highly motivated and results-oriented Operations Associate with a passion for growth and marketing. 
+      This is a unique opportunity to play a key role in scaling Boda Guy's presence in Kampala. You will be instrumental
+      in driving the acquisition and engagement of all sides of our marketplace customers, riders, and business partners
+      by blending operational excellence with smart marketing initiatives. If you thrive in a fast-paced environment, love
+      solving problems, and are excited by the prospect of building something impactful, this role is for you!
+
+      What You'll Do:
+      - Drive Growth: Develop, execute, and manage strategies to acquire and retain customers, riders, and local business 
+        partners using both operational improvements and targeted marketing campaigns.
+      - Rider Operations: Oversee aspects of the rider lifecycle, including supporting onboarding processes, managing rider 
+        engagement programs, monitoring service quality, and providing operational support to ensure a positive rider experience.
+      - Marketing Execution: Plan, launch, and track local marketing initiatives (both online and offline) to increase brand 
+        awareness and user acquisition (customers and riders).
+      - Business Development Support: Identify potential business clients (restaurants, e-commerce, retail) and support 
+        outreach efforts to build partnerships for Boda Guy's delivery services.
+      - Data Analysis: Monitor key performance indicators (KPIs) related to growth, operational efficiency, and market 
+        penetration. Analyze data to identify trends, opportunities, and areas for improvement.
+      - Process Optimization: Continuously evaluate and improve operational processes, such as rider onboarding, support 
+        workflows, and delivery service standards.
+      - Cross-Functional Collaboration: Work closely with product, engineering, and support teams to provide feedback, 
+        troubleshoot issues, and enhance the Boda Guy platform experience for all users.
+      - Local Market Intelligence: Stay informed about the local market landscape, competitor activities, and user needs 
+        to inform strategy.
+
+      What You'll Need (Qualifications):
+      - Bachelor's degree in Business Administration, Marketing, Operations Management, Economics, or a related field.
+      - 1 year of experience in operations, marketing, business development, analytics, or a similar role, preferably 
+        within a fast-paced tech startup, e-commerce, or logistics company.
+      - Strong analytical skills with proficiency in data analysis tools (Excel required; SQL or BI tool experience is a strong plus).
+      - Proven ability to execute marketing campaigns or operational projects with measurable results.
+      - Excellent communication, interpersonal, and negotiation skills.
+      - Strong problem-solving abilities and a proactive, hands-on approach.
+      - Highly organized with the ability to manage multiple tasks and priorities effectively.
+      - Deep understanding of the Kampala market and consumer/rider behavior.
+      - Adaptable and comfortable working in a dynamic startup environment.
+      - Fluency in English and Luganda is highly desirable.
+
+      Bonus Points:
+      - Direct experience in the ride-sharing or on-demand delivery industry.
+      - Experience with digital marketing channels (social media, SEM, etc.).
+      - Experience working directly with boda boda riders or similar gig economy workers.
+    `,
     },
-    {
-      id: '6',
-      title: 'Customer Support Specialist',
-      location: 'Remote (US)',
-      department: 'Customer Support',
-      type: 'Full-Time',
-      description: "Provide exceptional support to our customers and drivers. You'll be the first point of contact for service inquiries, helping to resolve issues and ensure a positive experience."
-    },
-    {
-      id: '7',
-      title: 'Backend Engineer',
-      location: 'San Francisco, CA',
-      department: 'Engineering',
-      type: 'Full-Time',
-      description: "Work on the core infrastructure of our delivery platform. You'll design and implement scalable services, APIs, and data pipelines to support our growing business."
-    },
-    {
-      id: '8',
-      title: 'Data Scientist',
-      location: 'Remote (US)',
-      department: 'Engineering',
-      type: 'Full-Time',
-      description: "Analyze large datasets to extract insights that drive business decisions. You'll work on predictive models for demand forecasting, optimal routing, and driver matching algorithms."
-    } */
   ];
   
   // Filter jobs by department
@@ -109,30 +94,50 @@ const Careers = () => {
     const formData = new FormData(e.target as HTMLFormElement);
     const resumeFile = formData.get('resume') as File;
 
+    if (!resumeFile) {
+      toast({
+        title: 'No File Selected',
+        description: 'Please select a resume file to upload.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    if (resumeFile.size > 50 * 1024 * 1024) { // 50MB limit
+      toast({
+        title: 'File Too Large',
+        description: 'The uploaded file exceeds the maximum allowed size of 50MB.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     let resumeUrl = null;
 
     try {
-      if (resumeFile) {
-        const fileName = `${Date.now()}-${resumeFile.name}`;
-        const { data, error: uploadError } = await supabase.storage
-          .from('resumes')
-          .upload(fileName, resumeFile);
+      const fileName = `${Date.now()}-${resumeFile.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
+      const { data, error: uploadError } = await supabase.storage
+        .from('resumes')
+        .upload(fileName, resumeFile, {
+          cacheControl: '3600',
+          upsert: false,
+        });
 
-        if (uploadError) {
-          console.error('Error uploading resume:', uploadError);
-          toast({
-            title: 'Resume Upload Failed',
-            description: 'There was an error uploading your resume. Please try again later.',
-            variant: 'destructive',
-          });
-          return;
-        }
-
-        const { data: publicUrlData } = supabase.storage.from('resumes').getPublicUrl(fileName);
-        resumeUrl = publicUrlData?.publicUrl || null;
-        console.log('Resume uploaded successfully:', resumeUrl);
+      if (uploadError) {
+        console.error('Error uploading resume:', uploadError);
+        toast({
+          title: 'Resume Upload Failed',
+          description: 'There was an error uploading your resume. Please try again later.',
+          variant: 'destructive',
+        });
+        return;
       }
 
+      const { data: publicUrlData } = supabase.storage.from('resumes').getPublicUrl(fileName);
+      resumeUrl = publicUrlData?.publicUrl || null;
+      console.log('Resume uploaded successfully:', resumeUrl);
+
+      // Proceed with submitting the application
       const applicationData = {
         first_name: formData.get('first-name') as string,
         last_name: formData.get('last-name') as string,

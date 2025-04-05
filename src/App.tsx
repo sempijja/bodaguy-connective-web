@@ -13,6 +13,8 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Careers from "./pages/Careers"; 
 import BecomeDriver from "./pages/BecomeDriver";
+import Privacy from "@/pages/Privacy";
+import TermsOfService from "@/pages/TermsOfService";
 import NotFound from "./pages/NotFound";
 
 // Add motion library
@@ -36,6 +38,8 @@ const App = () => (
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/become-driver" element={<BecomeDriver />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="*" element={<NotFound />} /> {/* Catch-all route */}
           </Routes>
         </AnimatePresence>

@@ -52,7 +52,7 @@ const JobCard = ({
         </div>
       </div>
       
-      <p className="text-gray-600 mb-6 line-clamp-3">{description}</p>
+      <p className="text-gray-600 mb-6 whitespace-pre-line">{description}</p>
       
       <Button 
         onClick={onApply}

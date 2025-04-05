@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Camera, Upload, User, UserCheck } from "lucide-react";
+import { UserCheck } from "lucide-react";
 import MainLayout from "@/layouts/MainLayout";
 import PageHeader from "@/components/PageHeader";
 import { Button } from "@/components/ui/button";
@@ -17,25 +17,59 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { PhotoUploader } from "@/components/PhotoUploader";
-import { uploadPhoto, saveDriverApplication } from "@/lib/supabaseClient";
+import { supabase } from "@/lib/supabaseClient";
+
+export const uploadPhoto = async (file: File): Promise<string | null> => {
+  try {
+    const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
+    const { data, error } = await supabase.storage
+      .from("driver-photos")
+      .upload(fileName, file, {
+        cacheControl: "3600",
+        upsert: false,
+      });
+
+    if (error) {
+      console.error("Error uploading photo:", error);
+      return null;
+    }
+
+    const { data: publicUrlData } = supabase.storage
+      .from("driver-photos")
+      .getPublicUrl(fileName);
+
+    return publicUrlData?.publicUrl || null;
+  } catch (error) {
+    console.error("Error in uploadPhoto function:", error);
+    return null;
+  }
+};
 
 // Validation schema
-const formSchema = z.object({
-  fullName: z.string().min(3, "Full name must be at least 3 characters"),
-  nationalId: z
-    .string()
-    .min(6, "National ID number must be at least 6 characters"),
-  phoneNumber: z
-    .string()
-    .min(10, "Phone number must be at least 10 digits")
-    .regex(/^\+?[0-9]+$/, "Phone number must contain only numbers"),
-  licenseNumber: z
-    .string()
-    .min(6, "Driver's license must be at least 6 characters"),
-  photo: z.instanceof(File, { message: "Photo is required" }), // Photo is now required
-});
+const formSchema = z
+  .object({
+    fullName: z.string().min(3, "Full name must be at least 3 characters"),
+    nationalId: z.string().min(6, "National ID number must be at least 6 characters"),
+    phoneNumber: z
+      .string()
+      .min(10, "Phone number must be at least 10 digits")
+      .regex(/^\+?[0-9]+$/, "Phone number must contain only numbers"),
+    vehicleType: z.enum(["bicycle", "motorbike"], "Vehicle type is required"),
+    licenseNumber: z.string().optional(), // Initially optional
+    photo: z.instanceof(File, { message: "Photo is required" }),
+  })
+  .superRefine((data, ctx) => {
+    // Conditionally validate licenseNumber
+    if (data.vehicleType === "motorbike" && (!data.licenseNumber || data.licenseNumber.length < 6)) {
+      ctx.addIssue({
+        path: ["licenseNumber"],
+        message: "Driver's license is required for motorbike drivers and must be at least 6 characters",
+      });
+    }
+  });
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -51,7 +85,7 @@ const BecomeDriver = () => {
       fullName: "",
       nationalId: "",
       phoneNumber: "",
-      licenseNumber: "",
+      vehicleType: "bicycle",
     },
   });
 
@@ -69,13 +103,19 @@ const BecomeDriver = () => {
       }
 
       // Save form data to Supabase
-      await saveDriverApplication({
-        fullName: data.fullName,
-        nationalId: data.nationalId,
-        phoneNumber: data.phoneNumber,
-        licenseNumber: data.licenseNumber,
-        photoUrl,
+      const { error } = await supabase.from("drivers").insert({
+        full_name: data.fullName,
+        national_id: data.nationalId,
+        phone_number: data.phoneNumber,
+        vehicle_type: data.vehicleType,
+        license_number: data.vehicleType === "motorbike" ? data.licenseNumber : null,
+        photo_url: photoUrl,
       });
+
+      if (error) {
+        console.error("Error inserting driver data:", error);
+        throw error;
+      }
 
       toast({
         title: "Application submitted!",
@@ -97,10 +137,9 @@ const BecomeDriver = () => {
     }
   };
 
-  // Handle photo selection
   const handlePhotoSelected = (file: File) => {
     setPhotoFile(file);
-    form.setValue("photo", file, { shouldValidate: true }); // Trigger validation
+    form.setValue("photo", file, { shouldValidate: true });
   };
 
   return (
@@ -108,24 +147,14 @@ const BecomeDriver = () => {
       <PageHeader
         title="Become a Bodaguy Driver"
         description="Join Uganda's top delivery service. Earn competitive pay while delivering packages across Kampala and beyond."
-        backgroundImage="https://images.unsplash.com/photo-1635335356074-a1ddda7ac4fc?q=80&w=2000&auto=format&fit=crop"
+        backgroundImage="https://res.cloudinary.com/dlkdmqaj3/image/upload/z_1.5/v1234567890/pexels-artempodrez-8989331_u5y5o1"
         className="text-center"
       />
 
       <section className="container px-4 py-12 md:py-16 mx-auto max-w-3xl">
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
-          <div className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-2">Driver Application Form</h2>
-            <p className="text-gray-600">
-              Please provide your details below to apply as a Bodaguy delivery driver.
-            </p>
-          </div>
-
           <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-8"
-            >
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
               <FormField
                 control={form.control}
                 name="fullName"
@@ -179,6 +208,31 @@ const BecomeDriver = () => {
 
               <FormField
                 control={form.control}
+                name="vehicleType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Vehicle Type</FormLabel>
+                    <FormControl>
+                      <Select
+                        onValueChange={(value) => field.onChange(value)}
+                        defaultValue={field.value}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select vehicle type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="bicycle">Bicycle</SelectItem>
+                          <SelectItem value="motorbike">Motorbike</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
                 name="licenseNumber"
                 render={({ field }) => (
                   <FormItem>
@@ -187,7 +241,7 @@ const BecomeDriver = () => {
                       <Input placeholder="UGL1234567" {...field} />
                     </FormControl>
                     <FormDescription>
-                      Enter your valid driver's license number.
+                      Required only for motorbike drivers.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -212,25 +266,12 @@ const BecomeDriver = () => {
               />
 
               <div className="pt-4">
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   className="w-full bg-bodaguy-600 hover:bg-bodaguy-700"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? (
-                    <span className="flex items-center gap-2">
-                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Processing...
-                    </span>
-                  ) : (
-                    <span className="flex items-center gap-2">
-                      <UserCheck size={18} />
-                      Submit Application
-                    </span>
-                  )}
+                  {isSubmitting ? "Processing..." : "Submit Application"}
                 </Button>
               </div>
             </form>
