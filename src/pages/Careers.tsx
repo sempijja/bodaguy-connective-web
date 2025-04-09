@@ -24,6 +24,7 @@ const Careers = () => {
   
   // Mock jobs data
   const jobs = [
+    /*
     {
       id: '1',
       title: 'Operations Associate (Growth & Marketing)',
@@ -74,6 +75,7 @@ const Careers = () => {
       - Experience working directly with boda boda riders or similar gig economy workers.
     `,
     },
+    */
   ];
   
   // Filter jobs by department
